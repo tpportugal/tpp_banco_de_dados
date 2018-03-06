@@ -81,13 +81,13 @@ module TransitlandDatastore
 
       # use Mandrill to send e-mail
       config.action_mailer.smtp_settings = {
-          address: "smtp.sparkpostmail.com",
-          port: 587,
-          enable_starttls_auto: true,
+          address: "smtp.gmx.com",
+          port: 465,
+          enable_starttls_auto: false,
           user_name: Figaro.env.mandrill_user_name,
           password: Figaro.env.mandrill_password,
           authentication: :plain,
-          domain: 'mapzen.com' # TODO: change to transit.land
+          domain: 'gmx.com' # TODO: change to transit.land
         }
     end
   end

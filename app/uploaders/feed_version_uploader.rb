@@ -1,9 +1,9 @@
 class FeedVersionUploader < CarrierWave::Uploader::Base
   if Rails.env.production? || Rails.env.staging?
-    storage :fog
+    storage :file
 
     def store_dir
-      "datastore-uploads/#{model.class.to_s.underscore}"
+      "uploads/#{model.class.to_s.underscore}"
     end
   else
     storage :file
