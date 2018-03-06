@@ -61,7 +61,7 @@ gem 'oj'
 gem 'faraday'
 
 # file attachments
-gem 'fog-aws', group: [:staging, :production]
+#gem 'fog-aws', group: [:staging, :production]
 gem 'carrierwave', '~>1.1.0'
 
 # development tools
@@ -93,7 +93,7 @@ gem 'rspec_junit_formatter', '0.2.2', group: :test
 # ^ for CircleCI: https://circleci.com/docs/test-metadata#rspec
 
 # deployment
-gem 'aws-sdk', group: [:staging, :production]
+#gem 'aws-sdk', group: [:staging, :production]
 
 # exception monitoring
 gem 'sentry-raven', group: [:staging, :production]
@@ -114,3 +114,6 @@ gem 'puma'
 
 # profiling
 gem 'memory_profiler', group: [:test, :development]
+
+#mailer
+gem 'mailcatcher'
