@@ -4,7 +4,7 @@ module OnestopId
 
   COMPONENT_SEPARATOR = '-'
   GEOHASH_FILTER = /[^0123456789bcdefghjkmnpqrstuvwxyz]/
-  NAME_TILDE = /[\-\:\&\@\/]/
+  NAME_TILDE = /[\-\.\:\&\@\/]/
   NAME_FILTER = /[^[:alnum:]\~\>\<]/
 
   class OnestopIdException < StandardError
