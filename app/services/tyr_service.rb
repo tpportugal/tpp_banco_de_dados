@@ -8,7 +8,7 @@ require 'singleton'
 class TyrService
   include Singleton
 
-  BASE_URL = Figaro.env.tyr_host || 'https://valhalla.mapzen.com'
+  BASE_URL = Figaro.env.tyr_host || 'https://valhalla.tppgeo.cf'
   MAX_LOCATIONS_PER_REQUEST = 100
 
   class Error < StandardError
