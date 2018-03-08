@@ -81,7 +81,7 @@ module TransitlandDatastore
 
       # use Mandrill to send e-mail
       config.action_mailer.smtp_settings = {
-          address: "smtp.gmx.com",
+          address: "mail.gmx.com",
           port: 465,
           enable_starttls_auto: false,
           user_name: Figaro.env.mandrill_user_name,
