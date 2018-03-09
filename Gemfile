@@ -26,7 +26,7 @@ gem 'redis-actionpack'
 gem 'redis-rack'
 
 # background processing
-gem 'sidekiq', '~> 5'
+gem 'sidekiq', '< 6'
 gem 'sidekiq-unique-jobs', group: [:development, :staging, :production] # doesn't play well with test
 gem 'sidekiq-limit_fetch'
 gem "sidekiq-cron", "~> 0.6.3"
