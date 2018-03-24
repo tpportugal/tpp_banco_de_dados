@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Transitland Datastore Feed",
+  "title": "TPP Datastore Feed",
   "type": "object",
   "required": ["onestopId"],
   "properties": {

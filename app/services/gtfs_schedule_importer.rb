@@ -11,7 +11,7 @@ class GTFSScheduleImporter
   }
 
   def initialize(feed, feed_version)
-    # GTFS Graph / TransitLand wrapper
+    # GTFS Graph / TPP wrapper
     @feed = feed
     @feed_version = feed_version
     @gtfs = nil

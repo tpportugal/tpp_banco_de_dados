@@ -11,7 +11,7 @@ class GTFSGraphImporter
   }
 
   def initialize(feed, feed_version)
-    # GTFS Graph / TransitLand wrapper
+    # GTFS Graph / TPP wrapper
     @feed = feed
     @feed_version = feed_version
     @gtfs = nil
@@ -206,11 +206,11 @@ class GTFSGraphImporter
     # ... create new issue
     if @entity_tl.size == 0
       # Describe all the rows in 'agency.txt':
-      details = ["No Agency in the GTFS Feed had a matching Transitland Operator"]
+      details = ["No Agency in the GTFS Feed had a matching TPP Operator"]
       details << "Agencies in GTFS Feed:"
       @gtfs.agencies.each { |agency| details << "\t#{agency.agency_id}: #{agency.agency_name}"}
       # Describe all Operators in Feed records:
-      details << "Existing Feed agency_id <-> Transitland Operator associations:"
+      details << "Existing Feed agency_id <-> TPP Operator associations:"
       @feed.operators_in_feed.each { |oif| details << "\t#{oif.gtfs_agency_id}: #{oif.operator.onestop_id}" }
       # Create Issue
       issue = Issue.new(issue_type: 'feed_import_no_operators_found', details: details.join("\n"))

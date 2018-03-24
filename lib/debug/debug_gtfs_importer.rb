@@ -10,7 +10,7 @@ OIFS = {}
 def create_from_gtfs(feed_onestop_id, path)
   feed = Feed.create!(
     onestop_id: feed_onestop_id,
-    url: "http://transit.land/example.zip",
+    url: "http://tpp.pt/example.zip",
     geometry: "POINT(#{rand(-124.4..-90.1)} #{rand(28.1..50.0095)})"
   )
 end

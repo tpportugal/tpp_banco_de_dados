@@ -48,7 +48,7 @@ class Api::V1::BaseApiController < ApplicationController
   end
 
   def default_url_options
-    TransitlandDatastore::Application.base_url_options
+    TppDatastore::Application.base_url_options
   end
 
   private

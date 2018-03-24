@@ -413,7 +413,7 @@ RSpec.describe ScheduleStopPair, type: :model do
       expect(ssps[1].window_end).to eq(ssps[4].destination_arrival_time)
       # Check interpolation method
       expect(ssps[0].origin_timepoint_source).to eq('gtfs_exact')
-      expect(ssps[0].destination_timepoint_source).to eq('transitland_interpolated_linear')
+      expect(ssps[0].destination_timepoint_source).to eq('tpp_interpolated_linear')
       expect(ssps[4].destination_timepoint_source).to eq('gtfs_exact')
     end
   end

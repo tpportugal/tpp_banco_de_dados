@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Transitland Datastore Operator",
+  "title": "TPP Datastore Operator",
   "type": "object",
   "required": ["onestopId"],
   "additionalProperties": false,

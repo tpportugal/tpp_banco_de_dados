@@ -1,4 +1,4 @@
-Rails.application.routes.default_url_options = TransitlandDatastore::Application.base_url_options
+Rails.application.routes.default_url_options = TppDatastore::Application.base_url_options
 
 Rails.application.routes.draw do
   namespace :api do

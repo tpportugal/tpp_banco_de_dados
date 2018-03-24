@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Transitland Datastore ScheduleStopPair",
+  "title": "TPP Datastore ScheduleStopPair",
   "type": "object",
   "required": [
     "originOnestopId",

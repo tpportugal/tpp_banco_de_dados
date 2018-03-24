@@ -1,6 +1,6 @@
 # database.yml
 RAILS_ENV=development
-DATABASE_URL=postgis://user:pass@db:5432/transitland_datastore?pool=5
+DATABASE_URL=postgis://user:pass@db:5432/tpp_datastore?pool=5
 REDIS_URL=redis://redis:6379
 POSTGRES_PASSWORD=pass
 POSTGRES_USER=user
@@ -8,11 +8,11 @@ POSTGRES_DB=tpp_datastore
 # application.yml
 ADMIN_USERNAME=onlyneedonproduction
 ADMIN_PASSWORD=onlyneedonproduction
-TRANSITLAND_DATASTORE_HOST=http://localhost:3000
+TPP_DATASTORE_HOST=http://localhost:3000
 AUTO_CONFLATE_STOPS_WITH_OSM=false
 MAX_HOURS_SINCE_LAST_CONFLATE=84
 TYR_HOST=http://localhost:8002
-TYR_AUTH_TOKEN=get one from mapzen.com/developers
+TYR_AUTH_TOKEN=get one from tpp.pt/developers
 RUN_GOOGLE_VALIDATOR=false
 RUN_CONVEYAL_VALIDATOR=false
 FEED_INFO_CACHE_EXPIRATION=14400

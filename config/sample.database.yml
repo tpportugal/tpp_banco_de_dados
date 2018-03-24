@@ -7,8 +7,8 @@ default: &default
 
 development:
   <<: *default
-  database: transitland_datastore_development
+  database: tpp_datastore_development
 
 test:
   <<: *default
-  database: transitland_datastore_test
+  database: tpp_datastore_test

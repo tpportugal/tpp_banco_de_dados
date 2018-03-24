@@ -3,9 +3,9 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "Transitland Datastore Activity Feed"
-    xml.author "Transitland"
-    xml.description "Open transit data importing, changing, and updating in the Transitland Datastore API and FeedEater import pipeline"
+    xml.title "TPP Datastore Activity Feed"
+    xml.author "TPP"
+    xml.description "Open transit data importing, changing, and updating in the TPP Datastore API and FeedEater import pipeline"
     xml.link url_for(controller: :activity_updates, action: :index, only_path: false)
     xml.language "en"
 

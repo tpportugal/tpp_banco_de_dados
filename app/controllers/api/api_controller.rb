@@ -1,13 +1,13 @@
 class Api::ApiController < Api::V1::BaseApiController
   def index
     json = Rails.cache.fetch('API_JSON_RESPONSE', expires_in: 1.day) do
-      version = TransitlandDatastore::Application::VERSION
+      version = TppDatastore::Application::VERSION
       {
         datastore: {
           version: version,
-          documentation: 'https://transit.land/documentation/datastore/',
-          code: "https://github.com/transitland/transitland-datastore/tree/#{version}",
-          release_notes: "https://github.com/transitland/transitland-datastore/releases/tag/#{version}"
+          documentation: 'https://tpp.pt/documentation/datastore/',
+          code: "https://github.com/Rui-Santos/tpp-datastore/tree/#{version}",
+          release_notes: "https://github.com/Rui-Santos/tpp-datastore/releases/tag/#{version}"
         },
         api_versions: {
           v1: {
