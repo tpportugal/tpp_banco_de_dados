@@ -6,10 +6,10 @@ Any API calls that involve writing to the database (creating/editing/applying ch
 
 ````yaml
 # config/application.yml
-TRANSITLAND_DATASTORE_AUTH_TOKEN: 1a4494f1fc463ab8e32d6b
+TPP_DATASTORE_AUTH_TOKEN: 1a4494f1fc463ab8e32d6b
 ````
 
-Or, specify as an environment variable. For example, `TRANSITLAND_DATASTORE_AUTH_TOKEN: 1a4494f1fc463ab8e32d6b bundle exec rails server`
+Or, specify as an environment variable. For example, `TPP_DATASTORE_AUTH_TOKEN: 1a4494f1fc463ab8e32d6b bundle exec rails server`
 
 To authenticate, include the following in your POST or PUT request:
 

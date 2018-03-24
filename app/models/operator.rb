@@ -55,7 +55,7 @@ class Operator < BaseOperator
       'Metro',
       'Timezone',
       'Website',
-      'Transitland Feed Registry URL'
+      'TPP Feed Registry URL'
     ]
   end
   def csv_row_values
@@ -68,7 +68,7 @@ class Operator < BaseOperator
       metro,
       timezone,
       tags.try(:fetch, :agency_url, nil),
-      "https://transit.land/feed-registry/operators/#{onestop_id}"
+      "https://tpp.pt/feed-registry/operators/#{onestop_id}"
     ]
   end
 

@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "transitland@mapzen.com" # TODO: change to a transit.land address
+  default from: "api@tpp.pt" # TODO: change to a real email address
   layout 'mailer'
 end

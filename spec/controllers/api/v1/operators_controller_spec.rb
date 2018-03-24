@@ -189,7 +189,7 @@ describe Api::V1::OperatorsController do
           vta.metro,
           vta.timezone,
           vta.tags[:agency_url],
-          "https://transit.land/feed-registry/operators/#{vta.onestop_id}"
+          "https://tpp.pt/feed-registry/operators/#{vta.onestop_id}"
         ].join(','))
       end
     end

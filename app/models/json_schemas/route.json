@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Transitland Datastore Route",
+  "title": "TPP Datastore Route",
   "type": "object",
   "required": ["onestopId"],
   "additionalProperties": false,

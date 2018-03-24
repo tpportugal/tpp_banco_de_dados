@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Transitland Datastore RouteStopPattern",
+  "title": "TPP Datastore RouteStopPattern",
   "type": "object",
   "required": ["onestopId"],
   "additionalProperties": false,

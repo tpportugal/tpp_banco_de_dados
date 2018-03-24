@@ -12,7 +12,7 @@ create_nycdot = Proc.new {
   path = Rails.root.join('spec/support/example_gtfs_archives/siferry-gtfs.zip')
   feed = Feed.find_by_onestop_id(feed_onestop_id) || Feed.create!(
     onestop_id: feed_onestop_id,
-    url: 'http://transit.land/example.zip',
+    url: 'http://tpp.pt/example.zip',
     geometry: {"type": "Polygon","coordinates": [[[-122.43,37.77],[-122.43,37.79],[-122.39,37.79],[-122.39,37.77],[-122.43,37.77]]]}
   )
   operator = Operator.find_by_onestop_id('o-dr5r7-nycdot') || Operator.create!(
@@ -36,7 +36,7 @@ create_caltrain = Proc.new {
   path = Rails.root.join('spec/support/example_gtfs_archives/f-9q9-caltrain.zip')
   feed = Feed.find_by_onestop_id(feed_onestop_id) || Feed.create!(
     onestop_id: feed_onestop_id,
-    url: 'http://transit.land/example.zip',
+    url: 'http://tpp.pt/example.zip',
     geometry: {"type": "Polygon","coordinates": [[[-122.43,37.77],[-122.43,37.79],[-122.39,37.79],[-122.39,37.77],[-122.43,37.77]]]}
   )
   operator =  Operator.find_by_onestop_id('o-9q9-caltrain') || Operator.create!(

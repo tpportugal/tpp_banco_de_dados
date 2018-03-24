@@ -11,16 +11,16 @@ require "action_view/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module TransitlandDatastore
+module TppDatastore
   class Application < Rails::Application
     def self.base_url_options
-      if Figaro.env.transitland_datastore_host.present?
+      if Figaro.env.tpp_datastore_host.present?
         base_url_options = {
-          host: Figaro.env.transitland_datastore_host.match(/:\/\/([^:]+)/)[1],
-          protocol: Figaro.env.transitland_datastore_host.split('://')[0],
+          host: Figaro.env.tpp_datastore_host.match(/:\/\/([^:]+)/)[1],
+          protocol: Figaro.env.tpp_datastore_host.split('://')[0],
           port: nil
         }
-        if (port_match = Figaro.env.transitland_datastore_host.match(/:(\d+)/))
+        if (port_match = Figaro.env.tpp_datastore_host.match(/:(\d+)/))
           base_url_options[:port] = port_match[1]
         end
       else
@@ -87,7 +87,7 @@ module TransitlandDatastore
           user_name: Figaro.env.mandrill_user_name,
           password: Figaro.env.mandrill_password,
           authentication: :plain,
-          domain: 'gmx.com' # TODO: change to transit.land
+          domain: 'gmx.com' # TODO: change to tpp.pt
         }
     end
   end

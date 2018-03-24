@@ -1,8 +1,8 @@
 # Change Log
 
-## [Unreleased](https://github.com/transitland/transitland-datastore/tree/HEAD)
+## [Unreleased](https://github.com/Rui-Santos/tpp-datastore/tree/HEAD)
 
-[Full Changelog](https://github.com/transitland/transitland-datastore/compare/80...HEAD)
+[Full Changelog](https://github.com/Rui-Santos/tpp-datastore/compare/80...HEAD)
 
 **Merged pull requests:**
 

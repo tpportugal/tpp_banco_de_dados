@@ -47,7 +47,7 @@ class FeedInfoWorker
     rescue GTFS::InvalidSourceException => e
       errors << {
         exception: 'InvalidSourceException',
-        message: 'This file does not appear to be a valid GTFS feed. Contact Transitland for more help.'
+        message: 'This file does not appear to be a valid GTFS feed. Contact TPP for more help.'
       }
     rescue StandardError => e
       errors << {

@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.10'
 
-# Transitland Datastore components
+# TPP Datastore components
 path 'components' do
   gem 'datastore_admin'
 end
@@ -34,7 +34,7 @@ gem "sidekiq-cron", "~> 0.6.3"
 # data model
 gem 'squeel'
 gem 'enumerize'
-gem 'gtfs', github: 'transitland/gtfs', tag: '900a28ea0067592b8529bdd5a43f31026f65ed52'
+gem 'gtfs', github: 'Rui-Santos/tpp-gtfs', tag: 'd494696cdd5af0adea339fc01c48e63bd840af59'
 gem 'rgeo-geojson'
 gem 'c_geohash', require: 'geohash'
 gem 'json'
@@ -61,7 +61,6 @@ gem 'oj'
 gem 'faraday'
 
 # file attachments
-#gem 'fog-aws', group: [:staging, :production]
 gem 'carrierwave', '~>1.1.0'
 
 # development tools
@@ -91,9 +90,6 @@ gem 'airborne', group: :test
 gem 'timecop', group: :test
 gem 'rspec_junit_formatter', '0.2.2', group: :test
 # ^ for CircleCI: https://circleci.com/docs/test-metadata#rspec
-
-# deployment
-#gem 'aws-sdk', group: [:staging, :production]
 
 # exception monitoring
 gem 'sentry-raven', group: [:staging, :production]
