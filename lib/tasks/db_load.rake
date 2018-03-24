@@ -26,7 +26,7 @@ namespace :db do
       end
     end
 
-    task :feeds_and_operators_from_transitland, [:base_url] => [:environment] do |t, args|
+    task :feeds_and_operators_from_tpp, [:base_url] => [:environment] do |t, args|
       # TODO: fetch from canonical server
     end
   end

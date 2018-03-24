@@ -71,16 +71,16 @@ class BaseScheduleStopPair < ActiveRecord::Base
   enumerize :origin_timepoint_source, in: [
       :gtfs_exact,
       :gtfs_interpolated,
-      :transitland_interpolated_linear,
-      :transitland_interpolated_geometric,
-      :transitland_interpolated_shape
+      :tpp_interpolated_linear,
+      :tpp_interpolated_geometric,
+      :tpp_interpolated_shape
     ]
   enumerize :destination_timepoint_source, in: [
       :gtfs_exact,
       :gtfs_interpolated,
-      :transitland_interpolated_linear,
-      :transitland_interpolated_geometric,
-      :transitland_interpolated_shape
+      :tpp_interpolated_linear,
+      :tpp_interpolated_geometric,
+      :tpp_interpolated_shape
     ]
   enumerize :frequency_type, in: [
     :exact,
@@ -317,13 +317,13 @@ class ScheduleStopPair < BaseScheduleStopPair
       a.window_end = window_end
       a.destination_arrival_time = t
       a.destination_departure_time = t
-      a.destination_timepoint_source = :transitland_interpolated_linear
+      a.destination_timepoint_source = :tpp_interpolated_linear
       # Next stop
       b.window_start = window_start
       b.window_end = window_end
       b.origin_arrival_time = t
       b.origin_departure_time = t
-      b.origin_timepoint_source = :transitland_interpolated_linear
+      b.origin_timepoint_source = :tpp_interpolated_linear
     end
   end
 
