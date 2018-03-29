@@ -37,9 +37,9 @@ class BaseFeed < ActiveRecord::Base
 
   extend Enumerize
   enumerize :feed_format, in: [:gtfs]
-  enumerize :license_use_without_attribution, in: [:yes, :no, :unknown]
-  enumerize :license_create_derived_product, in: [:yes, :no, :unknown]
-  enumerize :license_redistribute, in: [:yes, :no, :unknown]
+  enumerize :license_use_without_attribution, in: [:sim, :não, :desconhecido]
+  enumerize :license_create_derived_product, in: [:sim, :não, :desconhecido]
+  enumerize :license_redistribute, in: [:sim, :não, :desconhecido]
 
   validates :url, presence: true
   validates :url, format: { with: URI.regexp }, if: Proc.new { |feed| feed.url.present? }
@@ -324,9 +324,9 @@ class Feed < BaseFeed
     if self.new_record?
       self.tags ||= {}
       self.feed_format ||= 'gtfs'
-      self.license_use_without_attribution ||= 'unknown'
-      self.license_create_derived_product ||= 'unknown'
-      self.license_redistribute ||= 'unknown'
+      self.license_use_without_attribution ||= 'desconhecido'
+      self.license_create_derived_product ||= 'desconhecido'
+      self.license_redistribute ||= 'desconhecido'
     end
   end
 end
