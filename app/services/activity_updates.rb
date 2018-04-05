@@ -12,12 +12,12 @@ class ActivityUpdates
     changesets = Changeset.where("created_at > ?", since).includes(:user)
     updates = changesets.map do |changeset|
       {
-        id: "c-#{changeset.id}-created",
+        id: "c-#{changeset.id}-criado",
         entity_type: 'changeset',
         entity_id: changeset.id,
-        entity_action: 'created',
+        entity_action: 'criado',
         by_user_id: changeset.user.try(:id),
-        note: "Changeset ##{changeset.id} created. Includes notes: #{changeset.notes}",
+        note: "Changeset ##{changeset.id} criado. Inclui notas: #{changeset.notes}",
         at_datetime: changeset.created_at
       }
     end
@@ -33,12 +33,12 @@ class ActivityUpdates
     }.includes(:user)
     updates = changesets.map do |changeset|
       {
-        id: "c-#{changeset.id}-updated",
+        id: "c-#{changeset.id}-atualizado",
         entity_type: 'changeset',
         entity_id: changeset.id,
-        entity_action: 'updated',
+        entity_action: 'atualizado',
         by_user_id: changeset.user.try(:id),
-        note: "Changeset ##{changeset.id} updated. Includes notes: #{changeset.notes}",
+        note: "Changeset ##{changeset.id} atualizado. Inclui notas: #{changeset.notes}",
         at_datetime: changeset.updated_at
       }
     end
@@ -49,12 +49,12 @@ class ActivityUpdates
     changesets = Changeset.where("applied_at > ?", since).includes(:user)
     updates = changesets.map do |changeset|
       {
-        id: "c-#{changeset.id}-applied",
+        id: "c-#{changeset.id}-aplicado",
         entity_type: 'changeset',
         entity_id: changeset.id,
-        entity_action: 'applied',
+        entity_action: 'aplicado',
         by_user_id: changeset.user.try(:id),
-        note: "Changeset ##{changeset.id} applied. Includes notes: #{changeset.notes}",
+        note: "Changeset ##{changeset.id} aplicado. Inclui notas: #{changeset.notes}",
         at_datetime: changeset.applied_at
       }
     end
@@ -64,17 +64,17 @@ class ActivityUpdates
   def self.feeds_imported(since)
     feed_version_imports = FeedVersionImport.where("created_at > ? AND success IS NOT NULL", since)
     updates = feed_version_imports.map do |feed_version_import|
-      success_word = feed_version_import.success ? 'successfully' : 'unsuccessfully'
+      success_word = feed_version_import.success ? 'com successo' : 'sem successo'
       note = "
-        Feed #{feed_version_import.feed.onestop_id} version
-        with SHA1 hash #{feed_version_import.feed_version.sha1}
-        #{success_word} imported at level #{feed_version_import.import_level}
+        Versão da Feed #{feed_version_import.feed.onestop_id}
+        com a hash SHA1 de #{feed_version_import.feed_version.sha1}
+        importada #{success_word} no nível #{feed_version_import.import_level}
       ".squish
       {
-        id: "fvi-#{feed_version_import.id}-created",
+        id: "fvi-#{feed_version_import.id}-criada",
         entity_type: 'feed',
         entity_id: feed_version_import.feed.onestop_id,
-        entity_action: 'imported',
+        entity_action: 'importada',
         note: note,
         at_datetime: feed_version_import.created_at
       }
@@ -86,16 +86,16 @@ class ActivityUpdates
     feed_versions = FeedVersion.where("created_at > ?", since)
     updates = feed_versions.map do |feed_version|
       note = "
-        New version of #{feed_version.feed.onestop_id} feed
-        with SHA1 hash #{feed_version.sha1} fetched.
-        Calendar runs from #{feed_version.earliest_calendar_date}
-        to #{feed_version.latest_calendar_date}.
+        Nova versão da feed #{feed_version.feed.onestop_id}
+        com a hash SHA1 de #{feed_version.sha1} buscada.
+        Calendário vai de #{feed_version.earliest_calendar_date}
+        a #{feed_version.latest_calendar_date}.
       ".squish
       {
-        id: "fv-#{feed_version.sha1}-created",
+        id: "fv-#{feed_version.sha1}-criada",
         entity_type: 'feed',
         entity_id: feed_version.feed.onestop_id,
-        entity_action: 'fetched',
+        entity_action: 'buscada',
         note: note,
         at_datetime: feed_version.created_at
       }
@@ -108,7 +108,7 @@ class ActivityUpdates
     issues = Issue.where(issue_type: issue_types).where('created_at > ?', since)
     updates = issues.map do |issue|
       {
-        id: "issue-#{issue.id}-created",
+        id: "issue-#{issue.id}-criado",
         entity_type: 'issue',
         entity_id: issue.id,
         entity_action: issue.issue_type,

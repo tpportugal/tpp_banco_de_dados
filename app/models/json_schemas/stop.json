@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "TPP Datastore Stop",
+  "title": "Paragem do Banco de Dados TPP",
   "type": "object",
   "required": ["onestopId"],
   "additionalProperties": false,

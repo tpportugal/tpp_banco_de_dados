@@ -12,11 +12,11 @@ class Api::V1::WebhooksController < Api::V1::BaseApiController
     if workers
       render json: {
         code: 200,
-        message: "FeedFetcherWorkers #{workers.join(', ')} enqueued.",
+        message: "FeedFetcherWorkers #{workers.join(', ')} agendados.",
         errors: []
       }
     else
-      raise 'FeedFetcherWorkers could not be created or enqueued.'
+      raise 'FeedFetcherWorkers não puderam ser criados ou agendados.'
     end
   end
 
@@ -33,11 +33,11 @@ class Api::V1::WebhooksController < Api::V1::BaseApiController
     if feed_eater_worker
       render json: {
         code: 200,
-        message: "FeedEaterWorker ##{feed_eater_worker} has been enqueued.",
+        message: "FeedEaterWorker ##{feed_eater_worker} foi agendado.",
         errors: []
       }
     else
-      raise 'FeedEaterWorker could not be created or enqueued.'
+      raise 'FeedEaterWorker não pôde ser criado ou agendado.'
     end
   end
 

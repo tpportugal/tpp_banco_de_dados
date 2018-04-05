@@ -57,10 +57,10 @@ class Stop < BaseStop
   include CanBeSerializedToCsv
   def self.csv_column_names
     [
-      'Onestop ID',
-      'Name',
-      'Operators serving stop (names)',
-      'Operators serving stop (Onestop IDs)',
+      'ID Onestop',
+      'Nome',
+      'Operadores servindo paragem (nomes)',
+      'Operadores servindo paragem (IDs Onestop)',
       'Latitude (centroid)',
       'Longitude (centroid)'
     ]
@@ -360,7 +360,7 @@ class Stop < BaseStop
             osm_way_id = tyr_locate_response[index][:edges][0][:way_id]
           else
             log "Tyr response for Stop #{stop.onestop_id} did not contain edges. Leaving osm_way_id."
-            Issue.create!(issue_type: 'missing_stop_conflation_result', details: "Tyr response for Stop #{stop.onestop_id} did not contain edges. Leaving osm_way_id.")
+            Issue.create!(issue_type: 'missing_stop_conflation_result', details: "A resposta do Tyr para a Paragem #{stop.onestop_id} não continha edges. Deixando osm_way_id.")
               .entities_with_issues.create!(entity: stop, entity_attribute: 'osm_way_id')
           end
 

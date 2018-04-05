@@ -61,8 +61,8 @@ class Feed < BaseFeed
   include CanBeSerializedToCsv
   def self.csv_column_names
     [
-      'Onestop ID',
-      'Name',
+      'ID Onestop',
+      'Nome',
       'URL'
     ]
   end

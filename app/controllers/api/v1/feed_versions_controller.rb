@@ -120,27 +120,27 @@ class Api::V1::FeedVersionsController < Api::V1::BaseApiController
         array: true
       },
       calendar_coverage_includes: {
-        desc: "Coverage includes date",
+        desc: "Coberura inclui data",
         type: "date",
         array: true
       },
       calendar_coverage_begins_at_or_after: {
-        desc: "Coverage begins on or after date",
+        desc: "Cobertura começa na ou depois da data",
         type: "date",
         array: true
       },
       calendar_coverage_begins_at_or_before: {
-        desc: "Coverage begins on or before date",
+        desc: "Cobertura começa na ou antes da data",
         type: "date",
         array: true
       },
       ids: {
-        desc: "Feed Versions",
+        desc: "Versões da Feed",
         type: "sha1",
         array: true
       },
       sha1: {
-        desc: "Feed Versions",
+        desc: "Versões da Feed",
         type: "sha1",
         array: true
       }

@@ -1,15 +1,15 @@
 {
-	"$schema": "http://json-schema.org/draft-04/schema#",
-	"title": "TPP: Imported From Feed",
-	"type": "object",
-	"required": ["feedVersion"],
-	"additionalProperties": false,
-	"properties": {
-		"feedVersion": {
-			"type": "string"
-		},
-		"gtfsId": {
-			"type": ["string", "null"]
-		}
-	}
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "TPP: Importado da Feed",
+  "type": "object",
+  "required": ["feedVersion"],
+  "additionalProperties": false,
+  "properties": {
+    "feedVersion": {
+      "type": "string"
+    },
+    "gtfsId": {
+      "type": ["string", "null"]
+    }
+  }
 }

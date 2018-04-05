@@ -92,9 +92,9 @@ class ChangePayload < ActiveRecord::Base
   def revert!
     if applied
       # TODO: write it
-      raise Changeset::Error.new(changeset: self, message: "cannot revert. This functionality doesn't exist yet.")
+      raise Changeset::Error.new(changeset: self, message: "não é possível reverter. Esta funcionalidade ainda não existe.")
     else
-      raise Changeset::Error.new(changeset: self, message: 'cannot revert. This changeset has not been applied yet.')
+      raise Changeset::Error.new(changeset: self, message: "não é possível reverter. Este changeset ainda não foi aplicado.")
     end
   end
 

@@ -28,16 +28,16 @@ class Api::V1::RouteStopPatternsController < Api::V1::CurrentEntityController
   def query_params
     super.merge({
       traversed_by: {
-        desc: "Traversed by RouteStopPattern",
+        desc: "Atravessado pelo PadrãoRotaParagem",
         type: "onestop_id"
       },
       trips: {
-        desc: "Imported with GTFS trip ID",
+        desc: "Importado da viagem com o ID no GTFS",
         type: "string",
         array: true
       },
       stops_visited: {
-        desc: "Visits Stop",
+        desc: "Visita a Paragem",
         type: "onestop_id"
       }
     })

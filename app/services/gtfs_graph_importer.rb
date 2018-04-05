@@ -206,17 +206,17 @@ class GTFSGraphImporter
     # ... create new issue
     if @entity_tl.size == 0
       # Describe all the rows in 'agency.txt':
-      details = ["No Agency in the GTFS Feed had a matching TPP Operator"]
-      details << "Agencies in GTFS Feed:"
+      details = ["Nenhuma Agência na Feed GTFS Feed Tem um Operador TPP correspondente"]
+      details << "Agências na Feed GTFS:"
       @gtfs.agencies.each { |agency| details << "\t#{agency.agency_id}: #{agency.agency_name}"}
       # Describe all Operators in Feed records:
-      details << "Existing Feed agency_id <-> TPP Operator associations:"
+      details << "Associações entre agency_id da Feed <-> Operador TPP:"
       @feed.operators_in_feed.each { |oif| details << "\t#{oif.gtfs_agency_id}: #{oif.operator.onestop_id}" }
       # Create Issue
       issue = Issue.new(issue_type: 'feed_import_no_operators_found', details: details.join("\n"))
       issue.entities_with_issues.new(entity: @feed_version)
       issue.save!
-      fail GTFSGraphImporter::Error.new('No agencies found that match operators_in_feed')
+      fail GTFSGraphImporter::Error.new('Nenhuma agência encontrada que corresponda a operators_in_feed')
     end
 
     # Update Feed Geometry

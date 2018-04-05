@@ -34,21 +34,21 @@ class User < ActiveRecord::Base
 
   extend Enumerize
   enumerize :user_type, in: [
-    :community_builder,
-    :data_enthusiast,
-    :app_developer,
-    :hardware_vendor,
-    :consultant,
-    :transit_agency_staff,
-    :other_public_agency_staff
+    :construtor_de_comunidades,
+    :entusiasta_de_dados,
+    :programador_de_aplicações,
+    :fabricante_de_hardware,
+    :consultor,
+    :funcionário_de_operador_de_transportes,
+    :funcionário_de_agência_pública
   ]
 
   include CanBeSerializedToCsv
   def self.csv_column_names
     [
-      'Name',
-      'Affiliation',
-      'User Type',
+      'Nome',
+      'Afiliação',
+      'Tipo de Utilizador',
       'Email'
     ]
   end

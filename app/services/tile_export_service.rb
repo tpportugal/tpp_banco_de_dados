@@ -76,11 +76,11 @@ module TileExportService
     end
 
     def log(msg)
-      puts "tile #{@tile}: #{msg}"
+      puts "mosaico #{@tile}: #{msg}"
     end
 
     def debug(msg)
-      puts "tile #{@tile} debug: #{msg}"
+      puts "mosaico #{@tile} debug: #{msg}"
     end
 
     def build_stops
@@ -198,10 +198,10 @@ module TileExportService
               stop_pairs_total += 1
             rescue TileValueError => e
               errors[e.class.name.to_sym] += 1
-              log("error: ssp #{ssp.id}: #{e}")
+              log("erro: ssp #{ssp.id}: #{e}")
             rescue StandardError => e
               errors[e.class.name.to_sym] += 1
-              log("error: ssp #{ssp.id}: #{e}")
+              log("erro: ssp #{ssp.id}: #{e}")
             end
           end
 
@@ -423,7 +423,7 @@ module TileExportService
         stopid_graphid.each_slice(1000) { |i| redis.hmset(KEY_STOPID_GRAPHID, i.flatten) }
       end
       remaining = redis.llen(KEY_QUEUE_STOPS)
-      puts "remaining: ~#{remaining}"
+      puts "restam: ~#{remaining}"
     end
   end
 
@@ -450,7 +450,7 @@ module TileExportService
       builder.instance_variable_set('@graphid_stopid', graphid_stopid)
       builder.build_schedules
       remaining = redis.llen(KEY_QUEUE_SCHEDULES)
-      puts "remaining: ~#{remaining}"
+      puts "restam: ~#{remaining}"
     end
   end
 
@@ -480,7 +480,7 @@ module TileExportService
     end
 
     # Build bboxes
-    puts "Selecting tiles..."
+    puts "Selecionando mosaicos..."
     count_stops = Set.new
     stop_platforms = Hash.new { |h,k| h[k] = Set.new }
     stop_egresses = Hash.new { |h,k| h[k] = Set.new }
@@ -501,7 +501,7 @@ module TileExportService
               fvtiles << TileUtils::GraphID.new(level: GRAPH_LEVEL, lon: stop.coordinates[0], lat: stop.coordinates[1]).tile
             end
         end
-        puts "\t(#{count}/#{total}) #{feed_version.feed.onestop_id} #{feed_version.sha1}: #{fvtiles.size} tiles"
+        puts "\t(#{count}/#{total}) #{feed_version.feed.onestop_id} #{feed_version.sha1}: #{fvtiles.size} mosaicos"
         tiles += fvtiles
         count += 1
       end
@@ -510,11 +510,11 @@ module TileExportService
     # TODO: Filter stop_platforms/stop_egresses by feed_version
     count_egresses = count_stops.map { |i| stop_egresses[i].empty? ? 1 : stop_egresses[i].size }.sum
     count_platforms = count_stops.map { |i| stop_platforms[i].empty? ? 1 : stop_platforms[i].size }.sum
-    puts "Tiles to build: #{tiles.size}"
-    puts "Expected:"
-    puts "\tstops: #{count_stops.size}"
-    puts "\tplatforms: #{stop_platforms.map { |k,v| v.size }.sum}"
-    puts "\tegresses: #{stop_egresses.map { |k,v| v.size }.sum}"
+    puts "Mosaicos a construir: #{tiles.size}"
+    puts "Esperado:"
+    puts "\tparagens: #{count_stops.size}"
+    puts "\tplatformas: #{stop_platforms.map { |k,v| v.size }.sum}"
+    puts "\tsaídas: #{stop_egresses.map { |k,v| v.size }.sum}"
     puts "\tnodes: #{count_stops.size + count_egresses + count_platforms}"
     puts "\tstopid-graphid: #{count_platforms}"
 

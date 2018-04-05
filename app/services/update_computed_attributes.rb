@@ -75,7 +75,7 @@ class UpdateComputedAttributes::GeometryUpdateComputedAttributes < UpdateCompute
   def update_rsps_and_ssps_stop_distances
     # Recompute and update RouteStopPattern distances and associated ScheduleStopPairs
     @rsps_to_update_distances.merge(@changeset.route_stop_patterns_created_or_updated)
-    log "Calculating distances" unless @rsps_to_update_distances.empty?
+    log "Calculando distâncias" unless @rsps_to_update_distances.empty?
     @rsps_to_update_distances.each { |rsp|
       @old_issues_to_deprecate.merge(Issue.issues_of_entity(rsp, entity_attributes: ["stop_distances"]))
 
@@ -83,7 +83,7 @@ class UpdateComputedAttributes::GeometryUpdateComputedAttributes < UpdateCompute
         stop_distances = Geometry::EnhancedOTPDistances.new.calculate_distances(rsp)
         rsp.update_making_history(changeset: @changeset, new_attrs: { stop_distances: stop_distances })
       rescue StandardError
-        log "Could not calculate distances for Route Stop Pattern: #{rsp.onestop_id}"
+        log "Não foi possível calcular distâncias para a Route Stop Pattern: #{rsp.onestop_id}"
         rsp.update_making_history(changeset: @changeset, new_attrs: { stop_distances: Geometry::DistanceCalculation.fallback_distances(rsp) })
       end
 

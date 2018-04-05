@@ -34,7 +34,7 @@ class Api::V1::FeedVersionImportsController < Api::V1::BaseApiController
   def query_params
     super.merge({
       ids: {
-        desc: "FeedVersionImport IDs",
+        desc: "IDs FeedVersionImport",
         type: "integer",
         array: true
       },
@@ -44,7 +44,7 @@ class Api::V1::FeedVersionImportsController < Api::V1::BaseApiController
         array: true
       },
       feed_version_sha1: {
-        desc: "Feed Version",
+        desc: "Versão da Feed",
         type: "sha1",
         array: true
       }

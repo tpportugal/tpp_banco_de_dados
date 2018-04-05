@@ -3,11 +3,11 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "TPP Datastore Activity Feed"
+    xml.title "Feed de Atividades do Banco de Dados TPP"
     xml.author "TPP"
-    xml.description "Open transit data importing, changing, and updating in the TPP Datastore API and FeedEater import pipeline"
+    xml.description "Importação, alterações, e atualizações de dados abertos de transportes públicos no Banco de Dados TPP e no processo de importação do FeedEater"
     xml.link url_for(controller: :activity_updates, action: :index, only_path: false)
-    xml.language "en"
+    xml.language "pt"
 
     @activity_updates.each do |update|
       xml.item do

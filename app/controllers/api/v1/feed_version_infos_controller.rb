@@ -62,18 +62,18 @@ class Api::V1::FeedVersionInfosController < Api::V1::BaseApiController
         array: true
       },
       feed_version_sha1: {
-        desc: "Feed Version",
+        desc: "Versão da Feed",
         type: "sha1",
         array: true
       },
       type: {
-        desc: "Feed Version Info Type",
+        desc: "Tipo de Informação da Versão da Feed",
         type: "enum",
         enum: ["FeedVersionInfoStatistics","FeedVersionInfoConveyal"],
         array: true
       },
       id: {
-        desc: "Feed Version Info ID",
+        desc: "ID da Informação da Versão da Feed",
         type: "integer",
         array: true
       }

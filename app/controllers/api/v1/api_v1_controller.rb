@@ -4,8 +4,8 @@ class Api::V1::ApiV1Controller < Api::V1::BaseApiController
       {
         api: {
           base_url: api_v1_url,
-          documentation: 'https://tpp.pt/documentation/datastore/api-endpoints.html',
-          #swagger_description_url: 'https://github.com/transitland/transitland/issues/33', # TODO:
+          documentation: 'https://tpp.pt/documentação/banco_de_dados/api-endpoints.html',
+          # swagger_description_url: 'https://github.com/transitland/transitland/issues/33', # TODO:
           endpoints: array_of_endpoints
         },
       }

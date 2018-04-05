@@ -7,7 +7,7 @@ class Api::V1::OnestopIdController < Api::V1::BaseApiController
   def query_params
     super.merge({
       onestop_id: {
-        desc: "Onestop ID",
+        desc: "ID Onestop",
         type: "onestop_id"
       }
     })

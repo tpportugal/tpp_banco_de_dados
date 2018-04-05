@@ -61,7 +61,7 @@ class Api::V1::RoutesController < Api::V1::CurrentEntityController
   def query_params
     super.merge({
       operated_by: {
-        desc: "Operator",
+        desc: "Operador",
         type: "onestop_id",
         array: true
       },
@@ -69,31 +69,31 @@ class Api::V1::RoutesController < Api::V1::CurrentEntityController
         show: false
       },
       serves: {
-        desc: "Serves Stop",
+        desc: "Serve a Paragem",
         type: "onestop_id",
         array: true
       },
       traverses: {
-        desc: "Traverses RouteStopPattern",
+        desc: "Atravessa o PadrãoRotaParagem",
         type: "onestop_id",
         array: true
       },
       color: {
-        desc: "Route color",
+        desc: "Cor da Rota",
         type: "string"
       },
       vehicle_type: {
-        desc: "Vehicle type",
+        desc: "Tipo de Veículo",
         format: "string",
         array: true
       },
       wheelchair_accessible: {
-        desc: "Wheelchair accessible",
+        desc: "Acessível a cadeiras de rodas",
         format: "boolean",
         array: true
       },
       bikes_allowed: {
-        desc: "Bikes allowed",
+        desc: "Bicicletas permitidas",
         format: "boolean"
       }
     })

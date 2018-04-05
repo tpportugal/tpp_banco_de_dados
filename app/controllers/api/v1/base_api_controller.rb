@@ -44,7 +44,7 @@ class Api::V1::BaseApiController < ApplicationController
 
   # following this pattern: https://gist.github.com/Sujimichi/2349565
   def raise_not_found!
-    raise ActionController::RoutingError.new("No route matches #{request.env['REQUEST_METHOD']} /api/#{params[:unmatched_route]}")
+    raise ActionController::RoutingError.new("Nenhuma rota corresponde a #{request.env['REQUEST_METHOD']} /api/#{params[:unmatched_route]}")
   end
 
   def default_url_options
@@ -56,7 +56,7 @@ class Api::V1::BaseApiController < ApplicationController
   def query_params
     return {
       apikey: {
-        desc: "API Key",
+        desc: "Chave da API",
         type: "string"
       }
     }

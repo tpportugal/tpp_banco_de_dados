@@ -47,15 +47,15 @@ class Operator < BaseOperator
   include CanBeSerializedToCsv
   def self.csv_column_names
     [
-      'Onestop ID',
-      'Name',
-      'Short Name',
-      'Country',
-      'State',
-      'Metro',
-      'Timezone',
-      'Website',
-      'TPP Feed Registry URL'
+      'ID Onestop',
+      'Nome',
+      'Sigla ou Acrónimo',
+      'País',
+      'Distrito ou Região',
+      'Concelho',
+      'Zona Horária',
+      'Sítio Web',
+      'URL do Registo de Feeds TPP'
     ]
   end
   def csv_row_values
@@ -68,7 +68,7 @@ class Operator < BaseOperator
       metro,
       timezone,
       tags.try(:fetch, :agency_url, nil),
-      "https://tpp.pt/feed-registry/operators/#{onestop_id}"
+      "https://tpp.pt/registo-de-feeds/operators/#{onestop_id}"
     ]
   end
 

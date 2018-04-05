@@ -30,7 +30,7 @@ module TileUtils
     end
   end
 
-  # https://github.com/valhalla/valhalla/blob/master/valhalla/midgard/encoded.h
+  # https://github.com/tpportugal/tpp_valhalla/blob/master/valhalla/midgard/encoded.h
   class Shape7
     def self.encode(coordinates)
       output = []
@@ -154,7 +154,7 @@ module TileUtils
     def write_tile(tile, ext: nil)
       fn = tile_path(tile.level, tile.tile, ext: ext)
       FileUtils.mkdir_p(File.dirname(fn))
-      puts "writing tile: #{fn}"
+      puts "Escrevendo mosaico: #{fn}"
       File.open(fn, 'wb') do |f|
         f.write(tile.encode)
       end

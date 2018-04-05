@@ -5,9 +5,9 @@ class Api::ApiController < Api::V1::BaseApiController
       {
         datastore: {
           version: version,
-          documentation: 'https://tpp.pt/documentation/datastore/',
-          code: "https://github.com/Rui-Santos/tpp-datastore/tree/#{version}",
-          release_notes: "https://github.com/Rui-Santos/tpp-datastore/releases/tag/#{version}"
+          documentation: 'https://tpp.pt/documentação/banco-de-dados/',
+          code: "https://github.com/tpportugal/tpp_banco_de_dados/tree/#{version}",
+          release_notes: "https://github.com/tpportugal/tpp_banco_de_dados/releases/tag/#{version}"
         },
         api_versions: {
           v1: {

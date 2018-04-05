@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "TPP Datastore Feed",
+  "title": "Feed do Banco de Dados TPP",
   "type": "object",
   "required": ["onestopId"],
   "properties": {

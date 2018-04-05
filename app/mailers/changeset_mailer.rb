@@ -2,12 +2,12 @@ class ChangesetMailer < ApplicationMailer
   def creation(changeset_id)
     @changeset = Changeset.find(changeset_id)
     mail to: @changeset.user.email,
-         subject: "Hello from TPP. We've received your contribution!"
+         subject: "Olá do TPP. Recebemos a sua contribuição!"
   end
 
   def application(changeset_id)
     @changeset = Changeset.find(changeset_id)
     mail to: @changeset.user.email,
-         subject: "Hello from TPP. We've added your contribution!"
+         subject: "Olá do TPP. Adicionámos a sua contribuição!"
   end
 end

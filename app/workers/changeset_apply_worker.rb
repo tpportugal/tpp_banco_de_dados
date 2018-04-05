@@ -12,7 +12,7 @@ class ChangesetApplyWorker
     errors = []
     warnings = []
     response = {}
-    response[:status] = 'processing'
+    response[:status] = 'processando'
     Rails.cache.write(cachekey, response, expires_in: 1.day)
     # Apply
     changeset = Changeset.find(changeset_id)
@@ -26,7 +26,7 @@ class ChangesetApplyWorker
     end
     # Update status
     response = {}
-    response[:status] = errors.size > 0 ? 'error' : 'complete'
+    response[:status] = errors.size > 0 ? 'erro' : 'completo'
     response[:errors] = errors
     response[:warnings] = warnings
     Rails.cache.write(cachekey, response, expires_in: 1.day)

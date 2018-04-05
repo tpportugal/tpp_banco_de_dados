@@ -64,7 +64,7 @@ class QualityCheck::StationHierarchyQualityCheck < QualityCheck
     if (parent_stop.geometry_centroid.distance(stop_platform.geometry_centroid) > STOP_PLATFORM_PARENT_DIST_GAP_THRESHOLD)
       issue = Issue.new(created_by_changeset: self.changeset,
                         issue_type: 'stop_platform_parent_distance_gap',
-                        details: "Stop platform #{stop_platform.parent_stop_onestop_id} is too far from parent stop #{parent_stop.onestop_id}.")
+                        details: "A plataforma da paragem #{stop_platform.parent_stop_onestop_id} está demasiado distante da paragem pai #{parent_stop.onestop_id}.")
       issue.entities_with_issues.new(entity: parent_stop, issue: issue, entity_attribute: 'geometry')
       issue.entities_with_issues.new(entity: stop_platform, issue: issue, entity_attribute: 'geometry')
       self.issues << issue
@@ -75,7 +75,7 @@ class QualityCheck::StationHierarchyQualityCheck < QualityCheck
     if (stop_platform.geometry_centroid.distance(other_stop_platform.geometry_centroid) <= MINIMUM_DIST_BETWEEN_PLATFORMS)
       issue = Issue.new(created_by_changeset: self.changeset,
                         issue_type: 'stop_platforms_too_close',
-                        details: "Stop platform #{stop_platform.onestop_id} is too close to stop platform #{other_stop_platform.onestop_id}")
+                        details: "A plataforma #{stop_platform.onestop_id} está demasiado próxima da plataforma #{other_stop_platform.onestop_id}")
       issue.entities_with_issues.new(entity: stop_platform, issue: issue, entity_attribute: 'geometry')
       issue.entities_with_issues.new(entity: other_stop_platform, issue: issue, entity_attribute: 'geometry')
       self.issues << issue
@@ -94,7 +94,7 @@ class QualityCheck::GeometryQualityCheck < QualityCheck
   def distance_score
     if self.changeset.imported_from_feed
       import_score = ((self.distance_issue_tests - self.distance_issues).round(1)/self.distance_issue_tests).round(5) rescue 1.0
-      log "Feed: #{self.changeset.imported_from_feed.onestop_id} imported with Valhalla Import Score: #{import_score} #{self.distance_issue_tests} Stop-RouteStopPattern pairs were tested and #{self.distance_issues} distance issues found."
+      log "Feed: #{self.changeset.imported_from_feed.onestop_id} importada com o Valhalla Import Score: #{import_score} #{self.distance_issue_tests} Stop-RouteStopPattern pares foram testados e foram encontrados #{self.distance_issues} problemas de distância."
     end
   end
 
@@ -125,7 +125,7 @@ class QualityCheck::GeometryQualityCheck < QualityCheck
       if stop.geometry[:coordinates].eql?([0.0, 0.0])
         issue = Issue.new(created_by_changeset: self.changeset,
                           issue_type: 'stop_position_inaccurate',
-                          details: "Stop #{stop.onestop_id} is serving null island.")
+                          details: "A paragem #{stop.onestop_id} não está a servir local algum.")
         issue.entities_with_issues.new(entity: stop, issue: issue, entity_attribute: 'geometry')
         self.issues << issue
       end
@@ -163,7 +163,7 @@ class QualityCheck::GeometryQualityCheck < QualityCheck
       if rsp.stop_pattern.map{ |onestop_id| Stop.find_by_onestop_id!(onestop_id).geometry[:coordinates].map{ |coord| coord.round(RouteStopPattern::COORDINATE_PRECISION) } }.eql?(rsp.geometry[:coordinates])
         issue = Issue.new(created_by_changeset: self.changeset,
                           issue_type: 'rsp_line_only_stop_points',
-                          details: "RouteStopPattern #{rsp.onestop_id} has a line geometry generated from stops.")
+                          details: "RouteStopPattern #{rsp.onestop_id} tem uma linha geométrica gerada pelas coordenadas das paragens.")
         issue.entities_with_issues.new(entity: rsp, issue: issue, entity_attribute: 'geometry')
         self.issues << issue
       end
@@ -178,7 +178,7 @@ class QualityCheck::GeometryQualityCheck < QualityCheck
     if Geometry::OutlierStop.outlier_stop(stop, rsp)
       issue = Issue.new(created_by_changeset: self.changeset,
                         issue_type: 'stop_rsp_distance_gap',
-                        details: "Stop #{stop.onestop_id} and RouteStopPattern #{rsp.onestop_id} too far apart.")
+                        details: "A paragem #{stop.onestop_id} e a RouteStopPattern #{rsp.onestop_id} estão demasiado distantes.")
       issue.entities_with_issues.new(entity: stop, issue: issue, entity_attribute: 'geometry')
       issue.entities_with_issues.new(entity: rsp, issue: issue, entity_attribute: 'geometry')
       self.issues << issue
@@ -192,7 +192,7 @@ class QualityCheck::GeometryQualityCheck < QualityCheck
       if (!stop1.onestop_id.eql?(stop2.onestop_id) && stop1.geometry_centroid.distance(stop2.geometry_centroid) < MINIMUM_DIST_BETWEEN_STOP_PARENTS)
         issue = Issue.new(created_by_changeset: self.changeset,
                           issue_type: 'rsp_stops_too_close',
-                          details: "RouteStopPattern #{rsp.onestop_id}. Stop #{stop1.onestop_id}, number #{index-1}, has a geometry (#{stop1.geometry_centroid.to_s}) too close to Stop #{stop2.onestop_id}, number #{index}, with geometry (#{stop2.geometry_centroid.to_s})")
+                          details: "RouteStopPattern #{rsp.onestop_id}. Paragem #{stop1.onestop_id}, número #{index-1}, tem coordenadas (#{stop1.geometry_centroid.to_s}) demasiado próximas da paragem #{stop2.onestop_id}, número #{index}, com as coordenadas (#{stop2.geometry_centroid.to_s})")
         issue.entities_with_issues.new(entity: rsp, issue: issue, entity_attribute: 'geometry')
         issue.entities_with_issues.new(entity: stop1, issue: issue, entity_attribute: 'geometry')
         issue.entities_with_issues.new(entity: stop2, issue: issue, entity_attribute: 'geometry')
@@ -211,7 +211,7 @@ class QualityCheck::GeometryQualityCheck < QualityCheck
           unless (Stop.find_by_onestop_id!(stop1).geometry_centroid.distance(Stop.find_by_onestop_id!(stop2).geometry_centroid) < 1.0)
             issue = Issue.new(created_by_changeset: self.changeset,
                               issue_type: 'distance_calculation_inaccurate',
-                              details: "Distance calculation inaccuracy. Stop #{stop2}, number #{index+1}/#{rsp.stop_pattern.size}, of RouteStopPattern #{rsp.onestop_id} has the same distance (#{rsp.stop_distances[index]} m) as Stop #{stop1}. Distances: #{rsp.stop_distances}")
+                              details: "Cálculo de distância impreciso. A Paragem #{stop2}, número #{index+1}/#{rsp.stop_pattern.size}, da RouteStopPattern #{rsp.onestop_id} tem a mesma distância (#{rsp.stop_distances[index]} m) que a Paragem #{stop1}. Distâncias: #{rsp.stop_distances}")
             issue.entities_with_issues.new(entity: rsp, issue: issue, entity_attribute: 'stop_distances')
             issue.entities_with_issues.new(entity: OnestopId.find_current_and_old!(stop1), issue: issue, entity_attribute: 'geometry')
             issue.entities_with_issues.new(entity: OnestopId.find_current_and_old!(stop2), issue: issue, entity_attribute: 'geometry')
@@ -222,7 +222,7 @@ class QualityCheck::GeometryQualityCheck < QualityCheck
       elsif (rsp.stop_distances[index-1] > rsp.stop_distances[index])
         issue = Issue.new(created_by_changeset: self.changeset,
                           issue_type: 'distance_calculation_inaccurate',
-                          details: "Distance calculation inaccuracy. Stop #{stop2}, number #{index+1}/#{rsp.stop_pattern.size}, of RouteStopPattern #{rsp.onestop_id} occurs after Stop #{stop1}, but has a distance (#{rsp.stop_distances[index]} m) less than Stop #{stop1} distance (#{rsp.stop_distances[index-1]} m). Distances: #{rsp.stop_distances}")
+                          details: "Cálculo de distância impreciso. A Paragem #{stop2}, número #{index+1}/#{rsp.stop_pattern.size}, da RouteStopPattern #{rsp.onestop_id} ocorre após a Paragem #{stop1}, mas tem uma distância de (#{rsp.stop_distances[index]} m) a menos que a Paragem #{stop1} com a distância de (#{rsp.stop_distances[index-1]} m). Distâncias: #{rsp.stop_distances}")
         issue.entities_with_issues.new(entity: rsp, issue: issue, entity_attribute: 'stop_distances')
         issue.entities_with_issues.new(entity: OnestopId.find_current_and_old!(rsp.stop_pattern[index-2]), issue: issue, entity_attribute: 'geometry') unless index < 2
         issue.entities_with_issues.new(entity: OnestopId.find_current_and_old!(stop1), issue: issue, entity_attribute: 'geometry')
@@ -233,7 +233,7 @@ class QualityCheck::GeometryQualityCheck < QualityCheck
     if ((rsp.stop_distances[index] - geometry_length) > LAST_STOP_DISTANCE_LENIENCY)
       issue = Issue.new(created_by_changeset: self.changeset,
                         issue_type: 'distance_calculation_inaccurate',
-                        details: "Distance calculation inaccuracy. Stop #{stop2}, number #{index+1}/#{rsp.stop_pattern.size}, of RouteStopPattern #{rsp.onestop_id} has a distance (#{rsp.stop_distances[index]} m), greater than the length of the geometry, #{geometry_length}. Distances: #{rsp.stop_distances}")
+                        details: "Cálculo de distância impreciso. A Paragem #{stop2}, número #{index+1}/#{rsp.stop_pattern.size}, da RouteStopPattern #{rsp.onestop_id} tem uma distância de (#{rsp.stop_distances[index]} m), que é superior ao comprimento total da geometria, #{geometry_length}. Distâncias: #{rsp.stop_distances}")
       issue.entities_with_issues.new(entity: rsp, issue: issue, entity_attribute: 'stop_distances')
       issue.entities_with_issues.new(entity: OnestopId.find_current_and_old!(stop1), issue: issue, entity_attribute: 'geometry') unless index < 1
       issue.entities_with_issues.new(entity: OnestopId.find_current_and_old!(stop2), issue: issue, entity_attribute: 'geometry')
