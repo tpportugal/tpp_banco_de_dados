@@ -13,7 +13,7 @@ class OperatorRouteStopRelationship
     elsif stop_onestop_id
       @stop = Stop.find_by_onestop_id!(stop_onestop_id)
     else
-      raise 'must specify an stop by model or Onestop ID'
+      raise 'deve especificar a paragem pelo modelo ou ID Onestop'
     end
 
     if route
@@ -29,13 +29,13 @@ class OperatorRouteStopRelationship
     elsif @route && @route.operator
       @operator = @route.operator
     else
-      raise 'must specify an operator by model, by Onestop ID, or by route'
+      raise 'deve especificar o operador pelo modelo, ID Onestop, ou rota'
     end
 
     if !!does_service_exist == does_service_exist # is a boolean
       @does_service_exist = does_service_exist
     else
-      raise 'must specify whether service exists as a boolean'
+      raise 'deve especificar se o serviço existe como um boolean'
     end
   end
 
@@ -53,7 +53,7 @@ class OperatorRouteStopRelationship
     elsif !operator_serving_stop && !@does_service_exist
       # nothing to do
     else
-      raise 'something went wrong trying to apply OperatorRouteStopRelationship'
+      raise 'ocorreu um erro ao tentar aplicar OperatorRouteStopRelationship'
     end
 
     if @route
@@ -70,7 +70,7 @@ class OperatorRouteStopRelationship
       elsif !route_serving_stop && !@does_service_exist
         # nothing to do
       else
-        raise 'something went wrong trying to apply OperatorRouteStopRelationship'
+        raise 'ocorreu um erro ao tentar aplicar OperatorRouteStopRelationship'
       end
     end
   end

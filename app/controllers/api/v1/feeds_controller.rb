@@ -5,16 +5,16 @@ class Api::V1::FeedsController < Api::V1::CurrentEntityController
 
   def fetch_info
     url = params[:url]
-    raise Exception.new('invalid URL') if url.empty?
+    raise Exception.new('URL inválido') if url.empty?
     # Use read/write instead of fetch block to avoid race with Sidekiq.
     cachekey = "feeds/fetch_info/#{url}"
     cachedata = Rails.cache.read(cachekey)
     if !cachedata
-      cachedata = {status: 'queued', url: url}
+      cachedata = {status: 'agendado', url: url}
       Rails.cache.write(cachekey, cachedata, expires_in: FeedInfo::CACHE_EXPIRATION)
       FeedInfoWorker.perform_async(url, cachekey)
     end
-    if cachedata[:status] == 'error'
+    if cachedata[:status] == 'erro'
       render json: cachedata, status: 500
     else
       render json: cachedata
@@ -27,7 +27,7 @@ class Api::V1::FeedsController < Api::V1::CurrentEntityController
     if feed_version.download_url.present?
       redirect_to feed_version.download_url, status: 302
     else
-      fail ActiveRecord::RecordNotFound, "Either no feed versions are available for this feed or their license prevents redistribution"
+      fail ActiveRecord::RecordNotFound, "Não está disponível nenhuma versão da feed ou a sua licença não permite redistribuição"
     end
   end
 
@@ -76,36 +76,36 @@ class Api::V1::FeedsController < Api::V1::CurrentEntityController
   def query_params
     super.merge({
       name: {
-        desc: "Feed name",
+        desc: "Nome da feed",
         type: "string",
         array: true
       },
       last_imported_since: {
-        desc: "Last imported since",
+        desc: "Última importação desde",
         type: "datetime"
       },
       latest_fetch_exception: {
-        desc: "Latest fetch produced an exception",
+        desc: "A ultima busca produziu uma exceçaõ",
         type: "boolean"
       },
       active_feed_version_valid: {
-        desc: "The active Feed Version is valid on this date",
+        desc: "A Versão de Feed ativa está válida nesta data",
         type: "datetime"
       },
       active_feed_version_expired: {
-        desc: "The active Feed Version is expired on this date",
+        desc: "A Versão de Feed ativa está expirada nesta data",
         type: "datetime"
       },
       active_feed_version_update: {
-        desc: "There is a newer Feed Version than the current active Feed Version",
+        desc: "Existe uma Versão de Feed mais recente que a Versão de Feed atualmente ativa",
         type: "boolean"
       },
       active_feed_version_import_level: {
-        desc: "Import level of the active Feed Version",
+        desc: "Nível de Importação da Versão de Feed ativa",
         type: "integer"
       },
       latest_feed_version_import_status: {
-        desc: "Status of the most recent import",
+        desc: "Estado da importação mais recente",
         type: "string"
       },
       url: {

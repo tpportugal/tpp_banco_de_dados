@@ -41,7 +41,7 @@ class Api::V1::UsersController < Api::V1::BaseApiController
   def query_params
     super.merge({
       ids: {
-        desc: "Users",
+        desc: "Utilizadores",
         type: "integer",
         array: true
       }

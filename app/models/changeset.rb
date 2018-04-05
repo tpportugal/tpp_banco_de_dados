@@ -212,8 +212,8 @@ class Changeset < ActiveRecord::Base
         }.merge(issues_changeset_is_resolving)
         .each(&:deprecate)
     else
-      message = unresolved_issues.map { |issue| "Issue #{issue.id} was not resolved." }.join(" ")
-      log "Error applying Changeset #{self.id}: #{message}", :error
+      message = unresolved_issues.map { |issue| "Problema #{issue.id} não resolvido." }.join(" ")
+      log "Erro ao aplicar Changeset #{self.id}: #{message}", :error
       raise Changeset::Error.new(changeset: self, message: message)
     end
   end
@@ -251,7 +251,7 @@ class Changeset < ActiveRecord::Base
   end
 
   def apply!
-    fail Changeset::Error.new(changeset: self, message: 'has already been applied.') if applied
+    fail Changeset::Error.new(changeset: self, message: 'já foi aplicado.') if applied
     new_issues_created_by_changeset = []
     old_issues_to_deprecate = Set.new
 
@@ -295,7 +295,7 @@ class Changeset < ActiveRecord::Base
         post_quality_check_updates
 
       rescue StandardError => error
-        log "Error applying Changeset #{self.id}: #{error.message}", :error
+        log "Erro ao aplicar Changeset #{self.id}: #{error.message}", :error
         log error.backtrace, :error
         raise Changeset::Error.new(changeset: self, message: error.message, backtrace: error.backtrace)
       end
@@ -323,9 +323,9 @@ class Changeset < ActiveRecord::Base
   def revert!
     if applied
       # TODO: write it
-      raise Changeset::Error.new(changeset: self, message: "cannot revert. This functionality doesn't exist yet.")
+      raise Changeset::Error.new(changeset: self, message: "não é possível reverter. Esta funcionalidade ainda não existe.")
     else
-      raise Changeset::Error.new(changeset: self, message: 'cannot revert. This changeset has not been applied yet.')
+      raise Changeset::Error.new(changeset: self, message: "não é possível reverter. Este changeset ainda não foi aplicado.")
     end
   end
 

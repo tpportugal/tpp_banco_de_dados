@@ -1,14 +1,12 @@
 # This Ruby script queries the Tyr ("take your route") service
 # to associate a latitude-longitude pair with the closest OSM way.
-#
-# For more information about Tyr, see https://github.com/valhalla/tyr
 
 require 'singleton'
 
 class TyrService
   include Singleton
 
-  BASE_URL = Figaro.env.tyr_host || 'https://valhalla.tppgeo.cf'
+  BASE_URL = Figaro.env.tyr_host || 'https://routing.tpp.pt'
   MAX_LOCATIONS_PER_REQUEST = 100
 
   class Error < StandardError
@@ -25,17 +23,17 @@ class TyrService
     end
 
     if response.body.blank?
-      raise Error.new('Tyr returned an empty response')
+      raise Error.new('O Tyr retornou uma resposta vazia')
     elsif [401, 403].include?(response.status)
-      raise Error.new('Tyr request was unauthorized. Is TYR_AUTH_TOKEN set?')
+      raise Error.new('O pedido ao Tyr não foi autorizado. A TYR_AUTH_TOKEN está definida?')
     elsif response.status == 504
-      raise Error.new('Request to Tyr timed out. Is it running?')
+      raise Error.new('O pedido ao Tyr esgotou o tempo limite. Tem a certeza que o Tyr está acessível?')
     elsif response.status == 200
       raw_json = response.body
       parsed_json = JSON.parse(raw_json)
       parsed_json.map(&:deep_symbolize_keys)
     else
-      raise Error.new("Tyr returns an unexpected error\n#{response.body}")
+      raise Error.new("O Tyr retornou um erro inesperado\n#{response.body}")
     end
   end
 

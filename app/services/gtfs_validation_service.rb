@@ -1,7 +1,7 @@
 class GTFSValidationService
   include Singleton
 
-  GOOGLE_VALIDATOR_PATH = './virtualenv/bin/feedvalidator.py'
+  GOOGLE_VALIDATOR_PATH = './lib/google-gtfs-validator/feedvalidator.py'
   CONVEYAL_VALIDATOR_PATH = './lib/conveyal-gtfs-lib/gtfs-lib.jar'
   TIMEOUT_SECONDS = (60 * 60 * 4)
 

@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "TPP Datastore Changeset",
+  "title": "Changeset do Banco de Dados TPP",
   "type": "object",
   "properties": {
     "changes": {

@@ -4,7 +4,7 @@ class Api::V1::CurrentEntityController < Api::V1::BaseApiController
   include AllowFiltering
 
   def self.model
-    fail Exception.new("Abstract method")
+    fail Exception.new("Método Abstrato")
   end
 
   def index
@@ -104,7 +104,7 @@ class Api::V1::CurrentEntityController < Api::V1::BaseApiController
     # Allowed query parameters - and documentation
     super.merge({
       onestop_id: {
-        desc: "Onestop ID",
+        desc: "ID Onestop",
         type: "onestop_id",
         array: true
       },
@@ -117,24 +117,24 @@ class Api::V1::CurrentEntityController < Api::V1::BaseApiController
         type: "float"
       },
       r: {
-        desc: "Radius, in meters",
+        desc: "Raio, em metros",
         type: "float"
       },
       bbox: {
-        desc: "Bounding box",
+        desc: "Caixa delimitadora",
         type: "bbox"
       },
       updated_since: {
-        desc: "Updated since",
+        desc: "Atualizada desde",
         type: "datetime"
       },
       import_level: {
-        desc: "Import level",
+        desc: "Nível de Importação",
         type: "integer",
         array: true
       },
       imported_with_gtfs_id: {
-        desc: "Imported with GTFS ID",
+        desc: "Importada com o ID GTFS",
         type: "string",
         array: true
       },
@@ -142,49 +142,49 @@ class Api::V1::CurrentEntityController < Api::V1::BaseApiController
         show: false
       },
       imported_from_feed: {
-        desc: "Imported from Feed",
+        desc: "Importada da Feed",
         type: "onestop_id",
         array: true
       },
       imported_from_feed_version: {
-        desc: "Imported from Feed Version",
+        desc: "Importada da Versão de Feed",
         type: "sha1",
         array: true
       },
       imported_from_active_feed_version: {
-        desc: "Imported from the current active Feed Version",
+        desc: "Importada da Versão de Feed atualmente ativa",
         type: "boolean"
       },
       tag_key: {
-        desc: "Tag key",
+        desc: "Chave da Tag",
         type: "string"
       },
       tag_value: {
-        desc: "Tag value",
+        desc: "Valor da Tag",
         type: "string"
       },
       include: {
-        desc: "Include values",
+        desc: "Incluir valores",
         type: "enum",
         enum: ["geometry","imported_from_feeds","issues"]
       },
       exclude: {
-        desc: "Exclude values",
+        desc: "Excluir valores",
         type: "enum",
         enum: ["geometry","imported_from_feeds","issues"]
       },
       embed_issues: {
-        desc: "Embed Issues",
+        desc: "Embutir Problemas",
         type: "boolean",
         show: false
       },
       include_geometry: {
-        desc: "Include geometry",
+        desc: "Incluir geometria",
         type: "boolean",
         show: false
       },
       exclude_geometry: {
-        desc: "Exclude geometry",
+        desc: "Excluir geometria",
         type: "boolean",
         show: false
       }

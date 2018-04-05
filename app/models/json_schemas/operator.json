@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "TPP Datastore Operator",
+  "title": "Operador do Banco de Dados",
   "type": "object",
   "required": ["onestopId"],
   "additionalProperties": false,

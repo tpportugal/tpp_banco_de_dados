@@ -92,7 +92,7 @@ class Api::V1::StopStationsController < Api::V1::CurrentEntityController
   def query_params
     super.merge({
       served_by: {
-        desc: "Served by Route or Operator",
+        desc: "Servida pela Rota ou Operador",
         type: "onestop_id",
         array: true
       },
@@ -100,20 +100,20 @@ class Api::V1::StopStationsController < Api::V1::CurrentEntityController
         show: false
       },
       served_by_vehicle_types: {
-        desc: "Served by vehicle types",
+        desc: "Servida por veículos do tipo",
         type: "string",
         array: true
       },
       wheelchair_boarding: {
-        desc: "Wheelchair boarding",
+        desc: "Acessível a cadeiras de rodas",
         type: "boolean"
       },
       min_platforms: {
-        desc: "Mininum number of platforms",
+        desc: "Número mínimo de plataformas",
         type: "integer"
       },
       min_egresses: {
-        desc: "Mininum number of egresses",
+        desc: "Número mínimo de saídas",
         type: "integer"
       }
     })

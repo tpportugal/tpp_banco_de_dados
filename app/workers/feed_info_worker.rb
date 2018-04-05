@@ -10,8 +10,8 @@ class FeedInfoWorker
     @cachekey = cachekey
     @progress_checkpoint = 0.0
     # Partials
-    progress_download = lambda { |count,total| progress_check('downloading', count, total) }
-    progress_graph = lambda { |count,total,entity| progress_check('parsing', count, total) }
+    progress_download = lambda { |count,total| progress_check('buscando', count, total) }
+    progress_graph = lambda { |count,total,entity| progress_check('analisando', count, total) }
     # Download & parse feed
     feed, operators = nil, []
     errors = []
@@ -31,42 +31,44 @@ class FeedInfoWorker
     rescue GTFS::InvalidURLException => e
       errors << {
         exception: 'InvalidURLException',
-        message: 'There was a problem downloading the file. Check the address and try again, or contact the transit operator for more help.'
+        message: 'Ocorreu um erro ao buscar o ficheiro. Verifique o endereço e tente de novo, ou contacte o operador de transportes públicos para tentar resolver o problema.'
       }
     rescue GTFS::InvalidResponseException => e
       errors << {
         exception: 'InvalidResponseException',
         message: "There was an error downloading the file. The transit operator server responded with: #{e.to_s}.",
+        message: "Ocorreu um erro ao buscar o ficheiro. O servidor do operador de transportes públicos responde com: #{e.to_s}.",
         response_code: e.response_code
       }
     rescue GTFS::InvalidZipException => e
       errors << {
         exception: 'InvalidZipException',
-        message: 'The zip file appears to be corrupt.'
+        message: 'O ficheiro zip parece estar corrompido.'
       }
     rescue GTFS::InvalidSourceException => e
       errors << {
         exception: 'InvalidSourceException',
-        message: 'This file does not appear to be a valid GTFS feed. Contact TPP for more help.'
+        message: 'Este ficheiro não parece ser uma feed GTFS válida. Contacte o TPP para tentar resolver o problema.'
       }
     rescue StandardError => e
       errors << {
         exception: e.class.name,
         message: 'There was a problem downloading or processing from this URL.'
+        message: 'Ocorreu um problema ao buscar ou processar deste URL.'
       }
     end
 
     if feed && feed.persisted?
       warnings << {
         onestop_id: feed.onestop_id,
-        message: "Existing feed: #{feed.onestop_id}"
+        message: "Feed existente: #{feed.onestop_id}"
       }
     end
     operators.each do |operator|
       if operator && operator.persisted?
         warnings << {
           onestop_id: operator.onestop_id,
-          message: "Existing operator: #{operator.onestop_id}"
+          message: "Operador existente: #{operator.onestop_id}"
         }
       end
     end
@@ -78,7 +80,7 @@ class FeedInfoWorker
     if operators
       response[:operators] = operators.map { |o| OperatorSerializer.new(o).as_json }
     end
-    response[:status] = errors.size > 0 ? 'error' : 'complete'
+    response[:status] = errors.size > 0 ? 'erro' : 'completo'
     response[:errors] = errors
     response[:warnings] = warnings
     response[:url] = url

@@ -41,12 +41,12 @@ class Api::V1::ChangePayloadsController < Api::V1::BaseApiController
   def query_params
     super.merge({
       ids: {
-        desc: "Change Payload ID",
+        desc: "ID da Carga do Changeset",
         type: "integer",
         array: true
       },
       changeset_id: {
-        desc: "Changeset ID",
+        desc: "ID do Changeset",
         type: "integer",
         show: false
       }

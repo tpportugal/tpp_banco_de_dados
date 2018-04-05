@@ -55,22 +55,22 @@ class Api::V1::OperatorsController < Api::V1::CurrentEntityController
   def query_params
     super.merge({
       name: {
-        desc: "Operator name",
+        desc: "Nome do operador",
         type: "string",
         array: true
       },
       short_name: {
-        desc: "Operator short name",
+        desc: "Sigla/Acrónimo do operator",
         type: "string",
         array: true
       },
       country: {
-        desc: "Operator country",
+        desc: "País do operador",
         type: "string",
         array: true
       },
       state: {
-        desc: "Operator state",
+        desc: "Distrito ou Região do operador",
         type: "string",
         array: true
       },
@@ -80,17 +80,17 @@ class Api::V1::OperatorsController < Api::V1::CurrentEntityController
         array: true
       },
       timezone: {
-        desc: "Operator timezone",
+        desc: "Zona horária do operador",
         type: "string",
         array: true
       },
       with_feed: {
-        desc: "Operators referenced by a Feed",
+        desc: "Operadores referenciados por uma Feed",
         type: "string",
         array: true
       },
       without_feed: {
-        desc: "Operators not referenced by any Feed",
+        desc: "Operadores não referenciados por nenhuma Feed",
         type: "boolean",
       }
     })

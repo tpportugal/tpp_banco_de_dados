@@ -55,7 +55,7 @@ class Api::V1::ChangesetsController < Api::V1::BaseApiController
 
   def update
     if @changeset.applied
-      raise Changeset::Error.new(changeset: @changeset, message: 'cannot update a Changeset that has already been applied')
+      raise Changeset::Error.new(changeset: @changeset, message: 'não é possível atualizar um Changeset que já foi aplicado')
     else
       user_params = changeset_params.delete(:user).try(:compact)
 
@@ -90,11 +90,11 @@ class Api::V1::ChangesetsController < Api::V1::BaseApiController
     cachekey = "changesets/#{@changeset.id}/apply_async"
     cachedata = Rails.cache.read(cachekey)
     if !cachedata
-      cachedata = {status: 'queued'}
+      cachedata = {status: 'agendado'}
       Rails.cache.write(cachekey, cachedata, expires_in: 1.day)
       ChangesetApplyWorker.perform_async(@changeset.id, cachekey)
     end
-    if cachedata[:status] == 'error'
+    if cachedata[:status] == 'erro'
       render json: cachedata, status: 500
     else
       render json: cachedata
@@ -112,12 +112,12 @@ class Api::V1::ChangesetsController < Api::V1::BaseApiController
   def query_params
     super.merge({
       ids: {
-        desc: "Filter by Changeset ID",
+        desc: "Filtrar pelo Changeset com ID",
         type: "integer",
         array: true
       },
       applied: {
-        desc: "Applied Changesets",
+        desc: "Changesets aplicados",
         type: "boolean"
       }
     })

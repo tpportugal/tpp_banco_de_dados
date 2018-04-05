@@ -58,10 +58,10 @@ class Route < BaseRoute
   include CanBeSerializedToCsv
   def self.csv_column_names
     [
-      'Onestop ID',
-      'Name',
-      'Operated by (name)',
-      'Operated by (Onestop ID)'
+      'ID Onestop',
+      'Nome',
+      'Operada por (nome)',
+      'Operada por (ID Onestop)'
     ]
   end
 

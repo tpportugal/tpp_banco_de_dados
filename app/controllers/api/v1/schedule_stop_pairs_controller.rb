@@ -177,88 +177,88 @@ class Api::V1::ScheduleStopPairsController < Api::V1::BaseApiController
   def query_params
     super.merge({
       active: {
-        desc: "Imported from active Feed Version",
+        desc: "Importado da Versão de Feed ativa",
         type: "boolean"
       },
       date: {
-        desc: "Service on date",
+        desc: "Serviço na data",
         type: "date"
       },
       service_from_date: {
-        desc: "Service on or after date",
+        desc: "Serviço na ou depois da data",
         type: "date"
       },
       service_before_date: {
-        desc: "Service on or before date",
+        desc: "Serviço na ou antes da data",
         type: "date"
       },
       origin_onestop_id: {
-        desc: "Origin Stop",
+        desc: "Paragem de Origem",
         type: "onestop_id",
         array: true
       },
       destination_onestop_id: {
-        desc: "Destination Stop",
+        desc: "Paragem de Destino",
         type: "onestop_id",
         array: true
       },
       origin_departure_between: {
-        desc: "Origin departure between <time1>,<time2>",
+        desc: "Partida da origem entre <time1>,<time2>",
         type: "string",
         array: true
       },
       trip: {
-        desc: "Created from GTFS trip ID",
+        desc: "Criado da viagem com o ID no GTFS",
         type: "string",
         array: true
       },
       route_onestop_id: {
-        desc: "Route",
+        desc: "Rota",
         type: "Route",
         array: true
       },
       route_stop_pattern_onestop_id: {
-        desc: "Route Stop Pattern",
+        desc: "Padrão Rota Paragem",
         type: "onestop_id",
         array: true
       },
       operator_onestop_id: {
-        desc: "Operator",
+        desc: "Operador",
         type: "onestop_id",
         array: true
       },
       bbox: {
-        desc: "Bounding box",
+        desc: "Caixa delimitadora",
         type: "bbox"
       },
       updated_since: {
-        desc: "Updated since",
+        desc: "Atualizado desde",
         type: "datetime"
       },
       feed_version_sha1: {
-        desc: "Imported with Feed Version",
+        desc: "Importado da Versão de Feed",
         type: "sha1",
         array: true,
         show: false
       },
       feed_onestop_id: {
-        desc: "Imported with Feed",
+        desc: "Importado da Feed",
         type: "onestop_id",
         show: false,
         array: true
       },
       import_level: {
-        desc: "Import level",
+        desc: "Nível de Importação",
         type: "integer",
         array: true
       },
       imported_from_feed: {
-        desc: "Imported with Feed",
+        desc: "Importado da Feed",
         type: "onestop_id",
         array: true
       },
       imported_from_feed_version: {
-        desc: "Imported with Feed Version",
+        desc: "Importado da Versão de Feed",
         type: "sha1",
         array: true
       }
@@ -267,7 +267,7 @@ class Api::V1::ScheduleStopPairsController < Api::V1::BaseApiController
 
   def tz_now
     tz_onestop_id = params[:origin_onestop_id].presence || params[:destination_onestop_id].presence || params[:operator_onestop_id].presence
-    fail Exception.new('Must provide an origin_onestop_id, destination_onestop_id, or operator_onestop_id to use "now" or "today" relative times') unless tz_onestop_id
+    fail Exception.new('Deve providenciar um origin_onestop_id, destination_onestop_id, ou operator_onestop_id para usar tempos relativos a "now" ou "today"') unless tz_onestop_id
     tz_entity = OnestopId.find!(tz_onestop_id)
     TZInfo::Timezone.get(tz_entity.timezone).utc_to_local(DateTime.now)
   end
