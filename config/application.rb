@@ -81,13 +81,13 @@ module TppDatastore
 
       # use Mandrill to send e-mail
       config.action_mailer.smtp_settings = {
-          address: "mail.gmx.com",
+          address: "smtp.zoho.com",
           port: 465,
           enable_starttls_auto: false,
           user_name: Figaro.env.mandrill_user_name,
           password: Figaro.env.mandrill_password,
           authentication: :plain,
-          domain: 'gmx.com' # TODO: change to tpp.pt
+          domain: 'tpp.pt'
         }
     end
   end
