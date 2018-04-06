@@ -15,7 +15,7 @@ PATH
       sinatra
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (4.2.10)
       actionpack (= 4.2.10)
