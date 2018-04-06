@@ -1,5 +1,7 @@
 # TPP Datastore
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/cb2f7b4ce3b848df8a33191e2495e81d)](https://app.codacy.com/app/TPP/tpp_banco_de_dados?utm_source=github.com&utm_medium=referral&utm_content=tpportugal/tpp_banco_de_dados&utm_campaign=badger)
+
 A community-run and -edited timetable and map of public transit services in Portugal.
 
 ***For more information about TPP as a whole, and how to use the Datastore in particular, view the [TPP documentation site](https://tpp.pt/documentation).***
