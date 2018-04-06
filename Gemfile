@@ -34,7 +34,7 @@ gem "sidekiq-cron", "~> 0.6.3"
 # data model
 gem 'squeel'
 gem 'enumerize'
-gem 'gtfs', github: 'Rui-Santos/tpp-gtfs', tag: 'd494696cdd5af0adea339fc01c48e63bd840af59'
+gem 'gtfs', github: 'tpportugal/tpp_gtfs_lib', tag: 'd494696cdd5af0adea339fc01c48e63bd840af59'
 gem 'rgeo-geojson'
 gem 'c_geohash', require: 'geohash'
 gem 'json'

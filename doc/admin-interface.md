@@ -3,7 +3,7 @@
 Visit `/admin` to:
 
 - reset the database
-- use the [TPP Dispatcher](https://github.com/Rui-Santos/tpp-dispatcher) interface to view, fetch, and load feeds
+- use the [TPP Dispatcher](https://github.com/tpportugal/tpp_banco_de_dados) interface to view, fetch, and load feeds
 - view Sidekiq's dashboard
 - view Postgres query performance (using [PgHero](https://github.com/ankane/pghero))
 
