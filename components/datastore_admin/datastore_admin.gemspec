@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = DatastoreAdmin::VERSION
   s.authors     = ['Rui J Santos']
   s.email       = ['rui.s@gmx.pt']
-  s.homepage    = 'https://github.com/Rui-Santos/tpp-datastore'
+  s.homepage    = 'https://github.com/tpportugal/tpp_banco_de_dados'
   s.summary     = 'Admin interface for the TPP Datastore.'
   s.description = 'Admin interface for the TPP Datastore, wrapped as a Rails engine.
                    Keeps HTML-generating views out of the core of the Datastore, which is

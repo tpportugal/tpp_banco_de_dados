@@ -19,4 +19,4 @@ The change log can be updated with each pull request to master. But it's only ac
 We keep track of version numbers in two places:
 
 - Committed to code in `config/initializers/version.rb`.
-- Tags on the git repository, listed at https://github.com/Rui-Santos/tpp-datastore/tags
+- Tags on the git repository, listed at https://github.com/tpportugal/tpp_banco_de_dados/tags
