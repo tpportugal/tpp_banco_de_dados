@@ -8,7 +8,7 @@ module DatastoreAdmin
       if Rails.env.development?
         @iframe_url = 'http://localhost:4200'
       else
-        @iframe_url = '/dispatcher'
+        @iframe_url = '/expedidor'
       end
       render :iframed_dashboard
     end
@@ -32,18 +32,18 @@ module DatastoreAdmin
         flash[:error] = $!.message
       else
         messages = []
-        messages << 'Successfully cleared enqueued jobs.' if params[:clear_enqueued_jobs]
-        messages << 'Successfully destroyed feed versions.' if params[:destroy_feed_versions]
-        messages << 'Successfully truncated database.' if params[:truncate_database]
+        messages << 'Tarefas agendadas limpas com sucesso.' if params[:clear_enqueued_jobs]
+        messages << 'Versões de feed destruídas com sucesso.' if params[:destroy_feed_versions]
+        messages << 'Base de dados truncada com sucesso.' if params[:truncate_database]
         if messages.size > 0
           flash[:success] = messages.join(' ')
         else
-          flash[:info] = "You didn't check any boxes, so I didn't do anything."
+          flash[:info] = "Não marcou nenhuma opção, então não fiz nada."
         end
 
         workers = Sidekiq::Workers.new
         if workers.size > 0
-          flash[:warning] = "#{workers.size} worker(s) currently executing. You might want to truncate the database again, once they are complete."
+          flash[:warning] = "#{workers.size} tarefa(s) a ser(em) executada(s). Pode querer truncar a base de dados novamente quando as tarefas terminarem."
         end
       end
 

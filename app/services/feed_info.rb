@@ -66,7 +66,7 @@ class FeedInfo
     end
     name_agencies = entity.agencies.select { |agency| agency.stops.size > 0 }.map(&:agency_name).join('~')
     name_url = Addressable::URI.parse(attrs[:url]).host.gsub(/[^a-zA-Z0-9]/, '') if attrs[:url]
-    name = feed_id.presence || name_agencies.presence || name_url.presence || 'unknown'
+    name = feed_id.presence || name_agencies.presence || name_url.presence || 'desconhecido'
     # Create Feed
     attrs[:geometry] = geometry.to_geometry
     attrs[:onestop_id] = OnestopId.handler_by_model(Feed).new(
@@ -88,7 +88,7 @@ class FeedInfo
       Stop::GEOFACTORY.collection(tl_stops.map { |stop| stop.geometry_centroid })
     )
     # Generate third Onestop ID component
-    name = [entity.agency_name, entity.id, "unknown"]
+    name = [entity.agency_name, entity.id, 'desconhecido']
       .select(&:present?)
       .first
     # Create Operator
