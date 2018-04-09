@@ -1,3 +1,5 @@
+#!/bin/sh
+
 source virtualenv/bin/activate
 
 # Check specs
