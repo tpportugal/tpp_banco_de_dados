@@ -52,7 +52,6 @@ class FeedInfoWorker
     rescue StandardError => e
       errors << {
         exception: e.class.name,
-        message: 'There was a problem downloading or processing from this URL.'
         message: 'Ocorreu um problema ao buscar ou processar deste URL.'
       }
     end
