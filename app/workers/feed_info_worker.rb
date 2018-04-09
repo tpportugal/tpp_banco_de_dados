@@ -36,7 +36,6 @@ class FeedInfoWorker
     rescue GTFS::InvalidResponseException => e
       errors << {
         exception: 'InvalidResponseException',
-        message: "There was an error downloading the file. The transit operator server responded with: #{e.to_s}.",
         message: "Ocorreu um erro ao buscar o ficheiro. O servidor do operador de transportes públicos responde com: #{e.to_s}.",
         response_code: e.response_code
       }
