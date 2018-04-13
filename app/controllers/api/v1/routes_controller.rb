@@ -74,7 +74,7 @@ class Api::V1::RoutesController < Api::V1::CurrentEntityController
         array: true
       },
       traverses: {
-        desc: "Atravessa o PadrãoRotaParagem",
+        desc: "Atravessa o Padrão de Paragens de Rota",
         type: "onestop_id",
         array: true
       },

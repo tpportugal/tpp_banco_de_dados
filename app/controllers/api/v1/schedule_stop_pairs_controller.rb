@@ -218,7 +218,7 @@ class Api::V1::ScheduleStopPairsController < Api::V1::BaseApiController
         array: true
       },
       route_stop_pattern_onestop_id: {
-        desc: "Padrão Rota Paragem",
+        desc: "Padrão de Paragens de Rota",
         type: "onestop_id",
         array: true
       },

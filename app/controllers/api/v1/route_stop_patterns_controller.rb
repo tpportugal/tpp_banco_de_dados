@@ -28,7 +28,7 @@ class Api::V1::RouteStopPatternsController < Api::V1::CurrentEntityController
   def query_params
     super.merge({
       traversed_by: {
-        desc: "Atravessado pelo PadrãoRotaParagem",
+        desc: "Atravessado pelo Padrão de Paragens de Rota",
         type: "onestop_id"
       },
       trips: {
