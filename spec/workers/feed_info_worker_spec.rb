@@ -7,7 +7,7 @@ describe FeedInfoWorker do
       FeedInfoWorker.new.perform(url, cachekey)
     end
     cachedata = Rails.cache.read(cachekey)
-    expect(cachedata[:status]).to eq('complete')
+    expect(cachedata[:status]).to eq('completo')
     expect(cachedata[:url]).to eq(url)
     expect(cachedata[:feed][:onestop_id]).to eq('f-9q9-caltrain')
     expect(cachedata[:operators].size).to eq(1)
@@ -35,7 +35,7 @@ describe FeedInfoWorker do
       FeedInfoWorker.new.perform(url, cachekey)
     end
     cachedata = Rails.cache.read(cachekey)
-    expect(cachedata[:status]).to eq('error')
+    expect(cachedata[:status]).to eq('erro')
     expect(cachedata[:errors].first[:exception]).to eq('InvalidResponseException')
     expect(cachedata[:errors].first[:response_code]).to eq('404')
   end
@@ -48,7 +48,7 @@ describe FeedInfoWorker do
       FeedInfoWorker.new.perform(url, cachekey)
     end
     cachedata = Rails.cache.read(cachekey)
-    expect(cachedata[:status]).to eq('error')
+    expect(cachedata[:status]).to eq('erro')
     expect(cachedata[:errors].first[:exception]).to eq('InvalidURLException')
   end
 
@@ -60,7 +60,7 @@ describe FeedInfoWorker do
       FeedInfoWorker.new.perform(url, cachekey)
     end
     cachedata = Rails.cache.read(cachekey)
-    expect(cachedata[:status]).to eq('error')
+    expect(cachedata[:status]).to eq('erro')
     expect(cachedata[:errors].first[:exception]).to eq('InvalidZipException')
   end
 end

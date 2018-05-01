@@ -9,7 +9,7 @@ describe ChangesetApplyWorker do
             onestopId:  's-9q9-test',
             name: '1st Ave. & Holloway St.',
             timezone: 'America/Los_Angeles',
-            geometry: { type: 'Point', coordinates: [10.195312, 43.755225] }                          
+            geometry: { type: 'Point', coordinates: [10.195312, 43.755225] }
           }
         }
       ]
@@ -35,7 +35,7 @@ describe ChangesetApplyWorker do
       ChangesetApplyWorker.perform_async(@changeset.id, @cachekey)
     end
     cachedata = Rails.cache.fetch(@cachekey)
-    expect(cachedata[:status]).to eq('complete')
+    expect(cachedata[:status]).to eq('completo')
   end
 
   it 'returns errors' do
@@ -46,7 +46,7 @@ describe ChangesetApplyWorker do
       ChangesetApplyWorker.perform_async(@changeset.id, @cachekey)
     end
     cachedata = Rails.cache.fetch(@cachekey)
-    expect(cachedata[:status]).to eq('error')
+    expect(cachedata[:status]).to eq('erro')
     expect(cachedata[:errors].size).to eq(1)
     expect(cachedata[:errors].first[:exception]).to eq('ChangesetError')
   end
