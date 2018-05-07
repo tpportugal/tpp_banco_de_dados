@@ -1,0 +1,19 @@
+db:
+  env_file: env/development
+  image: mdillon/postgis
+
+redis:
+  env_file: env/development
+  image: redis
+
+app:
+  env_file: env/development
+  build: .
+  command: bundle exec rails s -p 8004 -b '0.0.0.0'
+  volumes:
+    - ".:/app"
+  ports:
+    - "8004:8004"
+  links:
+    - db
+    - redis

@@ -8,11 +8,11 @@ POSTGRES_DB=tpp_datastore
 # application.yml
 ADMIN_USERNAME=onlyneedonproduction
 ADMIN_PASSWORD=onlyneedonproduction
-TPP_DATASTORE_HOST=http://localhost:3000
+TPP_DATASTORE_HOST=http://localhost:8004
 AUTO_CONFLATE_STOPS_WITH_OSM=false
 MAX_HOURS_SINCE_LAST_CONFLATE=84
 TYR_HOST=http://localhost:8002
-TYR_AUTH_TOKEN=get one from tpp.pt/developers
+TYR_AUTH_TOKEN=thisisakeythisisakey
 RUN_GOOGLE_VALIDATOR=false
 RUN_CONVEYAL_VALIDATOR=false
 FEED_INFO_CACHE_EXPIRATION=14400

@@ -1,0 +1,23 @@
+db:
+  env_file: env/staging
+  image: mdillon/postgis
+  ports:
+    - "5432:5432"
+
+redis:
+  env_file: env/staging
+  image: redis
+  ports:
+    - "6379"
+
+app:
+  env_file: env/staging
+  build: .
+  command: bundle exec rails s -p 8004 -b '0.0.0.0'
+  volumes:
+    - ".:/app"
+  ports:
+    - "8004:8004"
+  links:
+    - db
+    - redis
