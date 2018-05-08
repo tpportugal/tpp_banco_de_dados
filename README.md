@@ -12,8 +12,8 @@ Note that this web application is designed to run at `https://tpp.pt/api/v1` Whi
 
 ## Technical documentation
 
-- [API endpoints](https://tpp.pt/documentation/datastore/api-endpoints.html)
 - [Local instructions](doc/local-instructions.md)
+- [API endpoints](https://tpp.pt/documentation/datastore/api-endpoints.html)
 - [Configuration reference](doc/configuration.md)
 - [Development practices](doc/development-practices.md)
 - [Conflation with OSM](doc/conflation-with-osm.md)
