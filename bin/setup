@@ -35,4 +35,10 @@ Dir.chdir APP_ROOT do
 
   puts "\n== Restarting application server =="
   system 'touch tmp/restart.txt'
+
+  puts "\n== Creating database =="
+  system 'bundle exec rake db:create'
+
+  puts "\n== Setting up database =="
+  system 'bundle exec rake db:setup'
 end
