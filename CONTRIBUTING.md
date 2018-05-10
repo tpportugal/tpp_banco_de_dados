@@ -1,10 +1,10 @@
 # Contributing
 
-Hello! Please read more about [participating in the TPP project](https://tpp.pt/participate/). We welcome comments, questions, and contributions by GitHub issues or [e-mail](mailto:tpp@tpp.pt).
+Hello! Please read more about [participating in the TPP project](https://tpp.pt/participar/). We welcome comments, questions, and contributions by GitHub issues or [e-mail](mailto:api@tpp.pt).
 
 ## Data import issues
 
-If you are trying to report an issue adding a feed to TPP using the Feed Registry interface, [please open an issues on the tpp/tpp repo and tag it with `data questions/debugging`](https://github.com/glaand/tpp/issues?q=is%3Aissue+is%3Aopen+label%3A%22data+questions%2Fdebugging%22). The issue may involve investigation into multiple repositories, so we use `glaand/tpp` as the place to collect these data bug reports.
+If you are trying to report an issue adding a feed to TPP using the Feed Registry interface, [please open an issues on the tpportugal/tpp repo and tag it with `data questions/debugging`](https://github.com/tpportugal/tpp/issues?q=is%3Aissue+is%3Aopen+label%3A%22data+questions%2Fdebugging%22). The issue may involve investigation into multiple repositories, so we use `tpportugal/tpp` as the place to collect these data bug reports.
 
 ## Datastore code
 
