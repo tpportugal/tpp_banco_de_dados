@@ -1,0 +1,25 @@
+db:
+  env_file: env/production
+  image: mdillon/postgis
+  volumes:
+    - "./volumes:/var/lib/postgresql/data"
+  ports:
+    - "5432:5432"
+
+redis:
+  env_file: env/production
+  image: redis
+  ports:
+    - "6379"
+
+app:
+  env_file: env/production
+  build: .
+  command: foreman export systemd /etc/systemd/system
+  volumes:
+    - ".:/app"
+  ports:
+    - "8004:8004"
+  links:
+    - db
+    - redis

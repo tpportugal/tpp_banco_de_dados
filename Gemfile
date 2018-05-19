@@ -110,6 +110,3 @@ gem 'puma'
 
 # profiling
 gem 'memory_profiler', group: [:test, :development]
-
-#mailer
-gem 'mailcatcher'

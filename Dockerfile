@@ -1,23 +1,18 @@
 FROM ruby:2.3.1
 
 # Install essentials
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev postgresql-client libgeos-dev
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev postgresql-client libgeos-dev systemd-sysv dbus
 
-# Setup /app
-RUN mkdir /app
-WORKDIR /app
+# Setup /data/banco_de_dados
+WORKDIR /data/banco_de_dados
 
 # Install bundler
 RUN gem install bundler -v 1.16.1
 
 # Install gems
-COPY components /app/components
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
-RUN bundle install
+COPY components /data/banco_de_dados/components
+COPY Gemfile /data/banco_de_dados/Gemfile
+COPY Gemfile.lock /data/banco_de_dados/Gemfile.lock
 
 # Install application
-COPY . /app
-
-# Run
-CMD bundle exec puma -C config/puma.rb
+COPY . /data/banco_de_dados

@@ -27,7 +27,7 @@ module TppDatastore
         base_url_options = {
           host: 'localhost',
           protocol: 'http',
-          port: '3000'
+          port: '8004'
         }
       end
       base_url_options

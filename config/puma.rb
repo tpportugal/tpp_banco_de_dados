@@ -1,5 +1,5 @@
 #!/usr/bin/env puma
-port        ENV.fetch("PORT") { 3000 }
+port        ENV.fetch("PORT") { 8004 }
 environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Preload app

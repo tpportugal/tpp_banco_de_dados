@@ -1,0 +1,25 @@
+db:
+  env_file: env/staging
+  image: mdillon/postgis
+  volumes:
+    - "./volumes:/var/lib/postgresql/data"
+  ports:
+    - "5432:5432"
+
+redis:
+  env_file: env/staging
+  image: redis
+  ports:
+    - "6379"
+
+app:
+  env_file: env/staging
+  build: .
+  command: bash docker-entrypoint.sh
+  volumes:
+    - ".:/app"
+  ports:
+    - "8004:8004"
+  links:
+    - db
+    - redis

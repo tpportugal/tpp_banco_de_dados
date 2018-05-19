@@ -1,4 +1,4 @@
-# Preview all emails at http://localhost:3000/rails/mailers/changeset_mailer
+# Preview all emails at http://localhost:8004/rails/mailers/changeset_mailer
 
 class ChangesetMailerPreview < ActionMailer::Preview
   def creation

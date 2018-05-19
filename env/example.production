@@ -1,0 +1,21 @@
+# database.yml
+RAILS_ENV=production
+DATABASE_URL=postgis://user:pass@db:5432/tpp_datastore?pool=5
+REDIS_URL=redis://redis:6379
+POSTGRES_PASSWORD=pass
+POSTGRES_USER=user
+POSTGRES_DB=tpp_datastore
+# application.yml
+ADMIN_USERNAME=onlyneedonproduction
+ADMIN_PASSWORD=onlyneedonproduction
+TPP_DATASTORE_HOST=http://localhost:8004
+AUTO_CONFLATE_STOPS_WITH_OSM=false
+MAX_HOURS_SINCE_LAST_CONFLATE=84
+TYR_HOST=http://valhalla:8002
+TYR_AUTH_TOKEN=thisisakeythisisakey
+RUN_GOOGLE_VALIDATOR=false
+RUN_CONVEYAL_VALIDATOR=false
+FEED_INFO_CACHE_EXPIRATION=14400
+AUTO_FETCH_FEED_VERSION=true
+GTFS_TMPDIR_BASEPATH: null
+ENQUEUE_NEXT_FEED_VERSIONS_MAX=0

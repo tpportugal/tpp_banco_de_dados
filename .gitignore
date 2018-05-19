@@ -45,3 +45,11 @@ virtualenv/
 # Ignore attachments
 public/uploads/*
 vendor
+
+# Env
+env/development
+env/staging
+env/production
+
+# Docker Volumes
+./volumes
