@@ -3,8 +3,8 @@ class Api::V1::ApiV1Controller < Api::V1::BaseApiController
     json = Rails.cache.fetch('API_V1_JSON_RESPONSE', expires_in: 1.day) do
       {
         api: {
-          base_url: api_v1_url,
-          documentation: 'https://tpp.pt/documentação/banco_de_dados/api-endpoints.html',
+          base_url: api_v1_url.gsub('/api/v1', '/v1'),
+          documentation: 'https://docs.tpp.pt/banco-de-dados/',
           # swagger_description_url: 'https://github.com/transitland/transitland/issues/33', # TODO:
           endpoints: array_of_endpoints
         },
