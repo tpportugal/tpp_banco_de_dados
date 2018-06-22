@@ -27,7 +27,7 @@ module JsonCollectionPagination
       data = collection.where('id > ?', min_id).limit(per_page+1).to_a
       data_on_page = data[0...per_page]
       meta[:sort_min_id] = min_id
-      (meta[:next] = url_for(qps.merge(meta).merge(sort_min_id: data_on_page.last.try(:id)))) if data.size > per_page
+      (meta[:next] = url_for(qps.merge(meta).merge(sort_min_id: data_on_page.last.try(:id)))).gsub('/api/v1', '/v1') if data.size > per_page
     else
       # Get the current page of results.
       #  Add +1 to limit to see if there is a next page.
@@ -38,10 +38,10 @@ module JsonCollectionPagination
       meta[:offset] = offset
       meta_prev = url_for(qps.merge(meta).merge({
         offset: (offset - per_page) >= 0 ? (offset - per_page) : 0,
-      }))
+      })).gsub('/api/v1', '/v1')
       meta_next = url_for(qps.merge(meta).merge({
         offset: offset + per_page,
-      }))
+      })).gsub('/api/v1', '/v1')
       (meta[:prev] = meta_prev) if offset > 0
       (meta[:next] = meta_next) if data.size > per_page
     end
